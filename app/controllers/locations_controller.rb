@@ -9,6 +9,7 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    authorize @location
   end
 
   # create needs admin approval
