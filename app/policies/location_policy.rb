@@ -10,7 +10,8 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    # should be user.admin? when this is defined. True in meantime
+    true
   end
 end
 

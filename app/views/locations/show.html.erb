@@ -1,2 +1,47 @@
-<h1>Location#show</h1>
-<p>Find me in app/views/location/show.html.erb</p>
+
+    <h1 class="text-center"><%= @location.name %></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+          <% if @location.photo? %>
+          <%= image_tag @location.photo.url(:medium) %>
+          <% else %>
+          <%= image_tag 'placeholder.jpg', width: '40%', float: 'left' %>
+          <% end %>
+          <p class="location-category"><%= @location.location_category %></p>
+          <p class="description">Description: <%= @location.description %></p>
+          <p class="location-details">Telephone: <%= @location.telephone %></p>
+          <p class="location-details">Website<%= @location.website %></p>
+          <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
+          <p class="location-details"><%= @location.postcode %></p>
+          <ul>
+            <% if @location.wheelchair_access? %>
+              <li>Wheelchair access</li>
+              <% end %>
+              <% if @location.step_free_access? %>
+              <li>Step-free access</li>
+              <% end %>
+              <% if @location.automatic_doors? %>
+              <li>Automatic doors</li>
+              <% end %>
+              <% if @location.disabled_parking? %>
+              <li>Disabled parking</li>
+              <% end %>
+              <% if @location.accessible_toilets? %>
+              <li>Accessible toilets</li>
+              <% end %>
+          </ul>
+      </div>
+        <div class="col-xs-4">
+          <%= image_tag 'map-placeholder.png', width: '90%' %>
+        <end>
+      <p class="text-center"><%= link_to 'Back to search results', :back %></p>
+      <!-- Only if admin -->
+      <p class="text-center"><%= link_to 'Edit listing', edit_location_path %></p>
+      <p class="text-center"><%= link_to 'Delete listing', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+    </div>
+
+  </div>
+</div>
+
