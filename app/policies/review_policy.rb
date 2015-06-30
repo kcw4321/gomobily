@@ -1,0 +1,3 @@
+class ReviewPolicy < ApplicationPolicy
+
+end
