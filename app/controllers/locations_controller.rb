@@ -1,10 +1,11 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.where(validated: true)
+    @locations = policy_scope(Location)
   end
 
   def show
     @location = Location.find(params[:id])
+    authorize @location
   end
 
   def new
@@ -15,6 +16,8 @@ class LocationsController < ApplicationController
   # create needs admin approval
   def create
     @location = Location.new(location_params)
+    authorize @location
+
     if @location.save
       redirect_to location_path(@restaurant)
     else
@@ -25,17 +28,22 @@ class LocationsController < ApplicationController
 
   def edit
     @location = Location.find(params[:id])
+    authorize @location
   end
 
   # update and destroy needs to be admin only
   def update
     @location = Location.find(params[:id])
+    authorize @location
+
     @location.update(location_params)
     redirect_to location_path
   end
 
   def destroy
     @location = Location.find(params[:id])
+    authorize @location
+
     @location.destroy
     redirect_to root_path
   end

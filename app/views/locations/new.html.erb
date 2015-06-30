@@ -16,13 +16,13 @@
           <%= f.input :postcode %>
           <%= f.input :location_category, collection: [
             'Accommodation',
-            'Public transport',
-            'Restaurant',
             'Bar/cafe',
-            'Park',
-            'Museum',
             'Cinema',
-            'Cultural site'] %>
+            'Cultural site',
+            'Museum',
+            'Park',
+            'Public transport',
+            'Restaurant'] %>
           <!-- %= f.input :validated, wrapper: :vertical_boolean %> -->
           <%= f.input :wheelchair_access, wrapper: :vertical_boolean %>
           <%= f.input :step_free_access, wrapper: :vertical_boolean %>
