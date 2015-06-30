@@ -1,0 +1,39 @@
+<h1>Add a new listing</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="form">
+        <%= simple_form_for @location, html: {multipart: true} do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :telephone %>
+          <%= f.input :website %>
+          <%= f.input :email %>
+          <%= f.label :photo %>
+          <%= f.file_field :photo %>
+          <%= f.input :street %>
+          <%= f.input :city %>
+          <%= f.input :postcode %>
+          <%= f.input :location_category, collection: [
+            'Accommodation',
+            'Public transport',
+            'Restaurant',
+            'Bar/cafe',
+            'Park',
+            'Museum',
+            'Cinema',
+            'Cultural site'] %>
+          <!-- %= f.input :validated, wrapper: :vertical_boolean %> -->
+          <%= f.input :wheelchair_access, wrapper: :vertical_boolean %>
+          <%= f.input :step_free_access, wrapper: :vertical_boolean %>
+          <%= f.input :automatic_doors, wrapper: :vertical_boolean %>
+          <%= f.input :disabled_parking, wrapper: :vertical_boolean %>
+          <%= f.input :accessible_toilets, wrapper: :vertical_boolean %>
+          <%= f.button :submit %>
+        <% end %>
+        <i class="fa fa-trash-o"></i><%= link_to 'Cancel', locations_path %>
+        <i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
