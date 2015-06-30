@@ -38,11 +38,11 @@
                   <i class="fa fa-home"></i>  <%= t ".profile", default: "Flat" %>
                 <% end %>
               </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Sign out" %>
-                <% end %>
-              </li>
+              <!-- <li>
+                %= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  %= t ".sign_out", default: "Sign out" %>
+                % end %>
+              </li> -->
             </ul>
           </li>
         <% else %>
@@ -54,7 +54,7 @@
           </li>
         <% end %>
         <li>
-          <%= link_to t(".top_call_to_action", default: "Rent your flat"), "#", class: "btn" %>
+          <%= link_to t(".top_call_to_action", default: "Leave a review"), "#", class: "btn" %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
