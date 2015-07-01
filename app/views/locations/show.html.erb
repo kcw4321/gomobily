@@ -38,7 +38,11 @@
       <p class="text-center"><%= link_to 'Back to search results', :back %></p>
       <!-- Only if admin -->
       <p class="text-center"><%= link_to 'Edit listing', edit_location_path %></p>
-      <p class="text-center"><%= link_to 'Delete listing', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+       <!-- % if policy(location).destroy? %> -->
+       <p class="text-center"><%= link_to "Delete", @location, method: :delete, class: :destroy, data: { confirm: 'Are you sure?' } %></p>
+     <!-- % end %> -->
+
 
     </div>
 
