@@ -1,17 +1,17 @@
 <h1 class="text-center">Listings</h1>
-<div class="container">
-<div class="row">
-  <div class="xs-col-12">
-      <%= form_tag @location_path, :method => :get do |f| %>
-        <div class="form-inline">
-        <%= search_field(:location_category, params[:location_category], collection: ['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant'], placeholder: "Choose a category", class: "form-control") %>
-          <%= search_field(:name, params[:name], placeholder: "Enter name", class: "form-control") %>
-          <%= search_field (:wheelchair_access),  %>
-          <%= search_field (:step_free_access) %>
-          <%= search_field (:automatic_doors) %>
-          <%= search_field (:disabled_parking) %>
-          <%= search_field (:accessible_toilets) %>
+  <div class="container">
+    <div class="row">
+      <div class="xs-col-12">
+          <%= form_tag locations_path, :method => :get do %>
+          <div class="form-inline">
+            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
+          <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+          <p>Wheelchair access <%= check_box_tag :wheelchair_access %>
+          Step-free access <%= check_box_tag(:step_free_access) %>
+          Automatic doors <%= check_box_tag(:automatic_doors) %>
+          Disabled parking <%= check_box_tag(:disabled_parking) %>
+          Accessible toilets <%= check_box_tag(:accessible_toilets) %></p>
         </div>
         <% end %>
       </div>

@@ -3,8 +3,27 @@
   background-size: cover;
   padding: 50px;
   position: relative;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  position: relative;
+  h2 {
+    font-weight: 100;
+    font-size: 25px;
+    font-family: $base-font;
+  }
 }
 
 .text-white {
   color: $white;
+  text-shadow: 1px 1px 3px darken($orange, 10%);
+}
+
+.filter-orange {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $orange;
+  opacity: 0.9;
 }
