@@ -1,0 +1,29 @@
+<h1> Hello <%= current_user.email %> </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+      <div class='img-circle'><%#= image_tag(current_user.picture.url(:medium)) %></div>
+      <div><%= current_user.email %></div>
+      </div>
+      <div><%= link_to "Edit", edit_user_registration_path(current_user) %></div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <% @locations.each do |location| %>
+    <%= @location.name %>
+    in <%= @location.city %>
+    <%= link_to location.name, location_path(@location) %>
+  <% end %>
+</div>
+
+<div>
+  <% @reviews.each do |review| %>
+    <%= current_user.review.rating %>
+    <%= current_user.review.content %>
+    <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+</div>

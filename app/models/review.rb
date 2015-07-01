@@ -32,4 +32,7 @@
 class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
+
+  # validates :content
+  # validates :rating, :presence => { :message => " cannot be blank, please select your rating!" }
 end
