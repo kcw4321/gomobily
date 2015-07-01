@@ -5,16 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-
 require 'open-uri'
 require 'nokogiri'
 
 links = []
 
 6.times do |i|
-
  html_file = open("http://www.jaccede.com/en/p/s/?what=&where=london&pg=#{i}&sort=&sort2=&0=trouver")
  html_doc = Nokogiri::HTML(html_file)
 

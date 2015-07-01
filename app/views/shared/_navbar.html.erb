@@ -8,34 +8,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">
-        <%= image_tag "logo.jpg" %>
-      </a>
+      <%= link_to root_path do %>
+        <i class="fa fa-home"></i> GOMOBILY
+        <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li>
-            <%= link_to "#" do %>
-              <i class="fa fa-envelope-o"></i> <%= t(".messages", default: "Messages") %>
-            <% end %>
-          </li>
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
-              <%= image_tag "http://placehold.it/30x30", class: "img-avatar" %>
-              Profile <span class="caret"></span>
+              Welcome <%= current_user.name %> <span class="caret"></span>
             <% end %>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <%= link_to "#" do %>
-                  <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+                <%= link_to account_profile_path do %>
+                  <i class="fa fa-user"></i> <%= t ".profile", default: "My profile" %>
                 <% end %>
               </li>
               <li>
-                <%= link_to "#" do %>
-                  <i class="fa fa-home"></i>  <%= t ".profile", default: "Flat" %>
+                <%= link_to edit_account_profile_path do %>
+                  <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit profile & reviews" %>
                 <% end %>
               </li>
               <!-- <li>
@@ -47,10 +41,16 @@
           </li>
         <% else %>
           <li>
-            <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path %>
+            <%= link_to new_user_session_path do %>
+              <i class="fa fa-sign-in"></i>
+              <%= t(".sign_in", default: "Sign in") %>
+            <% end %>
           </li>
           <li>
-            <%= link_to t(".sign_in", default: "Sign in"), new_user_session_path %>
+            <%= link_to new_user_registration_path do %>
+              <i class="fa fa-pencil"></i>
+              <%= t(".sign_up", default: "Sign up") %>
+            <% end %>
           </li>
         <% end %>
         <li>

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :locations do
-    resources :reviews
+    resources :reviews, only: [:new, :create]
+  end
+
+  namespace :account do
+    resource :profile, only: [:show, :edit, :update]
+    resources :reviews, only: [:edit, :update, :destroy]
   end
 
   devise_for :users
-  # root to: '#'
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  get 'about', to: 'pages#about'
-  get 'contact', to: 'pages#contact'
 end
