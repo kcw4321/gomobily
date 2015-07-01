@@ -15,12 +15,12 @@
           <p class="location-details">Website<%= @location.website %></p>
           <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
           <p class="location-details"><%= @location.postcode %></p>
-          <ul>
+          <ul class="list-inline">
             <% if @location.wheelchair_access? %>
-              <li>Wheelchair access</li>
+              <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
               <% end %>
               <% if @location.step_free_access? %>
-              <li>Step-free access</li>
+              <li><i class="fa fa-arrows-h"></i>Step-free access</li>
               <% end %>
               <% if @location.automatic_doors? %>
               <li>Automatic doors</li>
@@ -29,7 +29,7 @@
               <li>Disabled parking</li>
               <% end %>
               <% if @location.accessible_toilets? %>
-              <li>Accessible toilets</li>
+              <li><i class="fa fa-venus-mars"></i>Accessible toilets</li>
               <% end %>
           </ul>
       </div>
