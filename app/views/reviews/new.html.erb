@@ -10,7 +10,7 @@
       <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
     <% end %>
     <%= f.text_area :content, placeholder: "your review helps others know accessibility about awesome locations" %>
-    <%= f.button :submit %>
+    <%= f.button :submit, "Post my review" %>
   <% end %>
   <div>
     <%= link_to 'Cancel', location_reviews_path %>

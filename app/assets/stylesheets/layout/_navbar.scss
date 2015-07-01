@@ -1,22 +1,22 @@
 /* -------------------------------------
  * Colors & Fonts
  * ------------------------------------- */
-$navbar-color: $gray-light;
+$navbar-color: white;
 $navbar-hover-color: $yellow;
 $navbar-font-family: $navbar-font;
-$navbar-font-size: 14px;
+$navbar-font-size: 17px;
 $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
-$navbar-letter-spacing: 1.5px;
+$navbar-letter-spacing: 2,5px;
 $navbar-font-family: $navbar-font;
-$navbar-bg: white;
+$navbar-bg: #444b6e;
 
 /* -------------------------------------
  * Box model
  * ------------------------------------- */
 $navbar-height: 50px;
-$navbar-vertical-padding: 10px;
-$navbar-horizontal-padding: 20px;
+$navbar-vertical-padding: 15px;
+$navbar-horizontal-padding: 30px;
 $navbar-border-bottom-width: 1px;
 $navbar-border-bottom-color: $gray-lighter;
 
