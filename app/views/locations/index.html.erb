@@ -6,8 +6,11 @@
         <div class="form-inline">
         <%= search_field(:location_category, params[:location_category], collection: ['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant'], placeholder: "Choose a category", class: "form-control") %>
           <%= search_field(:name, params[:name], placeholder: "Enter name", class: "form-control") %>
-          <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
-          <%= search_field(:name, params[:name], placeholder: "Filter by:", class: "form-control") %>
+          <%= search_field (:wheelchair_access),  %>
+          <%= search_field (:step_free_access) %>
+          <%= search_field (:automatic_doors) %>
+          <%= search_field (:disabled_parking) %>
+          <%= search_field (:accessible_toilets) %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
         </div>
         <% end %>

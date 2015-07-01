@@ -14,10 +14,10 @@
       <h2>Search for accessibility information here</h2>
 
       <div class="xs-col-12">
-        <%= form_tag location_path, :method => :get do |f| %>
+        <%= form_tag locations_path, :method => :get do |f| %>
         <div class="form-inline">
-        <%= search_field(:location_category, params[:location_category], collection: ['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant'], placeholder: "Choose a category", class: "form-control") %>
-        <%= search_field(:name, params[:name], placeholder: "Enter name", class: "form-control") %>
+          <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
+          <%= search_field(:name, params[:name], placeholder: "Enter name", class: "form-control") %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
         </div>
         <% end %>
