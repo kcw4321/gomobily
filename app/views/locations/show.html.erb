@@ -15,7 +15,7 @@
             <p class="location-details">Website<%= @location.website %></p>
             <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
             <p class="location-details"><%= @location.postcode %></p>
-            <ul>
+            <ul class="list-inline">
               <% if @location.wheelchair_access? %>
                 <li>Wheelchair access</li>
                 <% end %>
