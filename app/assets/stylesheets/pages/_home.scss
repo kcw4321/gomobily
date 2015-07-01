@@ -1,0 +1,10 @@
+#home {
+  background-image: asset-url("london.jpg");
+  background-size: cover;
+  padding: 50px;
+  position: relative;
+}
+
+.text-white {
+  color: $white;
+}
