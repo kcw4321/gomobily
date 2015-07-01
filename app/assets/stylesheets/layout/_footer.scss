@@ -1,10 +1,15 @@
 // Your footer style
 
 #footer {
-background-color: #58324d;
+background-color: $purple;
 font-size: 25px;
 padding: 25px;
-  li {
-    text-color: white;
+  li i {
+    text-color: $white;
   }
+}
+
+
+.footer-button  {
+  text-color: $white;
 }
