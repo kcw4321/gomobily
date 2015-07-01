@@ -7,7 +7,7 @@
             <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
           <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
-          <p>Wheelchair access <%= check_box_tag :wheelchair_access %>
+          <p>Wheelchair access <%= check_box_tag(:wheelchair_access) %>
           Step-free access <%= check_box_tag(:step_free_access) %>
           Automatic doors <%= check_box_tag(:automatic_doors) %>
           Disabled parking <%= check_box_tag(:disabled_parking) %>
