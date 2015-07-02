@@ -1,17 +1,19 @@
-<h1>Write a Review</h1>
-<h2>Your review</h2>
-<div class="form">
-  <% form_id = "#{@location.id}_rating" %>
-  <%= form_for [@location, @review], :html => {:id => "#{form_id}"} do |f| %>
-    <%#= f.hidden_field :location_id %>
-    <%= f.hidden_field :rating, :id => "#{form_id}_stars" %>
-    <% (1..5).each do |i| %>
-      <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
+<div class="card">
+  <h1>Write a Review</h1>
+  <h2>Your review</h2>
+  <div class="form">
+    <% form_id = "#{@location.id}_rating" %>
+    <%= form_for [@location, @review], :html => {:id => "#{form_id}"} do |f| %>
+      <%#= f.hidden_field :location_id %>
+      <%= f.hidden_field :rating, :id => "#{form_id}_stars" %>
+      <% (1..5).each do |i| %>
+        <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
+      <% end %>
+      <%= f.text_area :content, placeholder: "your review helps others know accessibility about awesome locations" %>
+      <%= f.button :submit, "Post my review" %>
     <% end %>
-    <%= f.text_area :content, placeholder: "your review helps others know accessibility about awesome locations" %>
-    <%= f.button :submit, "Post my review" %>
-  <% end %>
-  <div>
-    <%= link_to 'Cancel', location_reviews_path %>
+    <div>
+      <%= link_to 'Cancel', location_reviews_path %>
+    </div>
   </div>
 </div>
