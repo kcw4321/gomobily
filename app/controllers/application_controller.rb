@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :city
     devise_parameter_sanitizer.for(:account_update) << :country
     devise_parameter_sanitizer.for(:account_update) << :mobility_category
+    devise_parameter_sanitizer.for(:account_update) << :picture
   end
 
   private

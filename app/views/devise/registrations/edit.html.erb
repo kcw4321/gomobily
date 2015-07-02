@@ -15,6 +15,11 @@
   <div><%= f.label :mobility_category %><br />
   <%= f.text_field :mobility_category %></div>
 
+  <div>
+  <%= f.label :picture %>
+  <%= f.file_field :picture %>
+  </div>
+
   <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
     <p>
       <%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %>
