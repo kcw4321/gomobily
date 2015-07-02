@@ -4,11 +4,23 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!, unless: :pages_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   after_action :verify_authorized, except:  :index, unless: :devise_or_pages_controller?
   after_action :verify_policy_scoped, only: :index, unless: :devise_or_pages_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) << :city
+    devise_parameter_sanitizer.for(:account_update) << :country
+    devise_parameter_sanitizer.for(:account_update) << :mobility_category
+    devise_parameter_sanitizer.for(:account_update) << :picture
+  end
 
   private
 
