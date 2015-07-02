@@ -1,19 +1,26 @@
-.wheelchair {
-  padding: 0 20px;
+.img-show {
+  padding: 5px 10px;
+  border-radius: 15px;
 }
 
-.wheelchair {
-
+.location-category {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.automatic-door {
-
+.card {
+  margin-top: 15px;
+  background: $white;
+  border: 1px solid darken($white, 10%);
+  border-radius: 5px;
+  padding: 10px 0 10px 10px;
+  margin-bottom: 20px;
 }
 
-.disabled-parking {
-
+.padding-left {
+  padding-left: 10px;
 }
 
-.accessible-toilets {
-
+.padded-small {
+  padding: 8px 0;
 }

@@ -1,5 +1,6 @@
-<h1 class="text-center">Listings</h1>
-  <div class="container">
+<div class="card">
+  <h1 class="text-center">Listings</h1>
+    <div class="container">
     <div class="row">
       <div class="xs-col-12">
           <%= form_tag locations_path, :method => :get do %>
@@ -7,15 +8,18 @@
             <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
           <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
-          <p>Wheelchair access <%= check_box_tag(:wheelchair_access) %>
-          Step-free access <%= check_box_tag(:step_free_access) %>
-          Automatic doors <%= check_box_tag(:automatic_doors) %>
-          Disabled parking <%= check_box_tag(:disabled_parking) %>
-          Accessible toilets <%= check_box_tag(:accessible_toilets) %></p>
+          </div>
+          <div class="padded-small">
+          <p><span class="padding-left">Wheelchair access </span> <%= check_box_tag(:wheelchair_access) %>
+          <span class="padding-left">Step-free access </span> <%= check_box_tag(:step_free_access) %>
+          <span class="padding-left">Automatic doors </span> <%= check_box_tag(:automatic_doors) %>
+          <span class="padding-left">Disabled parking </span> <%= check_box_tag(:disabled_parking) %>
+          <span class="padding-left">Accessible toilets </span> <%= check_box_tag(:accessible_toilets) %></p>
         </div>
         <% end %>
       </div>
     </div>
+  </div>
     <div class="row">
       <div class="col-xs-6">
         <div class="listing text-center">
@@ -24,9 +28,9 @@
             <div class="col-xs-6">
               <p class="location-details"><%= location.name %></p>
               <% if location.photo? %>
-              <%= image_tag location.photo.url(:thumb) %>
+              <%= image_tag location.photo.url(:thumb), :class=> "img-show" %>
               <% else %>
-              <%= image_tag 'placeholder.jpg', height: '100px' %>
+              <%= image_tag 'placeholder.jpg', height: '100px', :class=> "img-show" %>
               <% end %>
               <p><%= link_to "View location", location_path(location), class: "btn btn-primary" %></p>
               </div>
@@ -39,4 +43,5 @@
       </div>
     </div>
   <i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %>
+</div>
 </div>
