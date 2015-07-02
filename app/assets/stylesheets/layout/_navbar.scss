@@ -154,3 +154,33 @@ $navbar-profile-border-width: 2px;
     }
   }
 }
+/* -------------------------------------
+ * Navbar facebookconnect
+ * ------------------------------------- */
+.home__auth--facebook-button {
+  padding: 4px 15px 5px;
+  border: none;
+  background-color: #4E82BB;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  outline: none;
+  border-bottom: 1px solid #3b699b;
+  box-shadow: 0px 1px 1px -1px #909297;
+  -webkit-transition: color 150ms;
+  -moz-transition: color 150ms;
+  transition: color 150ms;
+  height: 40px;
+  width: 100%;
+  font-size: 13px;
+  }
+  a {
+  color: #81bfef;
+  text-decoration: none;
+}
+  .facebook-link{
+  color: white;
+  text-decoration: none;
+}

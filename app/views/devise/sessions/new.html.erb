@@ -9,7 +9,13 @@
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           <%= f.button :submit, t(".sign_in", default: "Sign in"), class: "btn btn-primary" %>
       <% end %>
+      <div class="clear"></div>
+        <div class=" home__auth--facebook-button text-center">
+        <%= link_to user_omniauth_authorize_path(:facebook), class: 'facebook-link' do %>
+          <i class='fa fa-facebook'></i> Connect with Facebook
+        <% end %>
 
+         </div>
       <%= render "devise/shared/links" %>
     </div>
   </div>
