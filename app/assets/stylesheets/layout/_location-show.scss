@@ -1,8 +1,26 @@
-.img-padding {
+.img-show {
   padding: 5px 10px;
+  border-radius: 15px;
 }
 
 .location-category {
   font-size: 18px;
   font-weight: bold;
+}
+
+.card {
+  margin-top: 15px;
+  background: $white;
+  border: 1px solid darken($white, 10%);
+  border-radius: 5px;
+  padding: 10px 0 10px 10px;
+  margin-bottom: 20px;
+}
+
+.padding-left {
+  padding-left: 10px;
+}
+
+.padded-small {
+  padding: 8px 0;
 }

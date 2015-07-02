@@ -1,58 +1,59 @@
-
-<h1 class="text-center"><%= @location.name %></h1>
-  <div class="location-show">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-8">
-          <% if @location.photo? %>
-          <%= image_tag @location.photo.url(:medium), :class=> "pull-left img-padding" %>
-          <% else %>
-          <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-padding" %>
-          <% end %>
-          <p class="location-category"><%= @location.location_category %></p>
-          <p class="description">Description: <%= @location.description %></p>
-          <% if @location.telephone? %>
-          <p class="location-details">Telephone: <%= @location.telephone %></p>
-          <% end %>
-          <% if @location.website? %>
-          <p class="location-details">Website:<%= @location.website %></p>
-          <% end %>
-          <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
-          <p class="location-details"><%= @location.postcode %></p>
-        </div>
-        <div class="col-xs-4">
-          <%= image_tag 'map-placeholder.png', width: '90%' %>
-          <p class="text-center"><%= link_to 'Back to search results', :back %></p>
-          <!-- Only if admin -->
-          <p class="text-center"><%= link_to 'Edit listing', edit_location_path %></p>
-         <!-- % if policy(location).destroy? %> -->
-         <!-- % end %> -->
-         <!-- % if policy(location).destroy? %> -->
-         <p class="text-center"><%= link_to "Delete", @location, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="col-xs-8">
+      <h1 class="text-center"><%= @location.name %></h1>
+      <% if @location.photo? %>
+      <%= image_tag @location.photo.url(:medium), :class=> "pull-left img-show" %>
+      <% else %>
+      <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-show" %>
+      <% end %>
+      <p class="location-category"><%= @location.location_category %></p>
+      <p class="description">Description: <%= @location.description %></p>
+      <% if @location.telephone? %>
+      <p class="location-details">Telephone: <%= @location.telephone %></p>
+      <% end %>
+      <% if @location.website? %>
+      <p class="location-details">Website: <%= @location.website %></p>
+      <% end %>
+      <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
+      <p class="location-details"><%= @location.postcode %></p>
+    </div>
+      <div class="col-xs-4">
+        <%= image_tag 'map-placeholder.png', width: '90%' %>
+        <p class="text-center"><%= link_to 'Back to search results', :back %></p>
+        <!-- Only if admin -->
+        <p class="text-center"><%= link_to 'Edit listing', edit_location_path %></p>
+       <!-- % if policy(location).destroy? %> -->
        <!-- % end %> -->
-       </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <ul class="list-inline">
-            <% if @location.wheelchair_access? %>
-              <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
-              <% end %>
-              <% if @location.step_free_access? %>
-              <li><i class="fa fa-arrows-h"></i>Step-free access</li>
-              <% end %>
-              <% if @location.automatic_doors? %>
-              <li>Automatic doors</li>
-              <% end %>
-              <% if @location.disabled_parking? %>
-              <li>Disabled parking</li>
-              <% end %>
-              <% if @location.accessible_toilets? %>
-              <li><i class="fa fa-venus-mars"></i>Accessible toilets</li>
-              <% end %>
-            </ul>
-          </div>
+       <!-- % if policy(location).destroy? %> -->
+       <p class="text-center"><%= link_to "Delete", @location, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+     <!-- % end %> -->
+     </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- <div class="card"> -->
+        <ul class="list-inline">
+          <% if @location.wheelchair_access? %>
+            <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
+            <% end %>
+            <% if @location.step_free_access? %>
+            <li><i class="fa fa-arrows-h"></i>Step-free access</li>
+            <% end %>
+            <% if @location.automatic_doors? %>
+            <li>Automatic doors</li>
+            <% end %>
+            <% if @location.disabled_parking? %>
+            <li>Disabled parking</li>
+            <% end %>
+            <% if @location.accessible_toilets? %>
+            <li><i class="fa fa-venus-mars"></i>Accessible toilets</li>
+            <% end %>
+          </ul>
         </div>
+      </div>
     </div>
   </div>
+</div>
 
