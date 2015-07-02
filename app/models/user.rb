@@ -20,6 +20,9 @@
 #  picture_file_size      :integer
 #  picture_updated_at     :datetime
 #  name                   :string
+#  city                   :string
+#  country                :string
+#  mobility_category      :string
 #
 # Indexes
 #
