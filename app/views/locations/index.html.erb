@@ -24,9 +24,9 @@
             <div class="col-xs-6">
               <p class="location-details"><%= location.name %></p>
               <% if location.photo? %>
-              <%= image_tag location.photo.url(:thumb) %>
+              <%= image_tag location.photo.url(:thumb), :class=> "img-padding" %>
               <% else %>
-              <%= image_tag 'placeholder.jpg', height: '100px' %>
+              <%= image_tag 'placeholder.jpg', height: '100px', :class=> "img-padding" %>
               <% end %>
               <p><%= link_to "View location", location_path(location), class: "btn btn-primary" %></p>
               </div>
