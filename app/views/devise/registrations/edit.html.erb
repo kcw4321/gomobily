@@ -14,7 +14,7 @@
   <%= f.text_field :city %></div>
 
   <div><%= f.label :mobility_category %><br />
-  <%= f.text_field :mobility_category %></div>
+  <%= select_tag :mobility_category, options_for_select(['Wheelchair user','Walking with mobility aid', 'Walking unassisted','Pushchair']), prompt: "Choose a category" %>
 
   <div>
   <%= f.label :picture, :default => "bouh" %>
