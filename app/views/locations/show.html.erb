@@ -42,13 +42,13 @@
         <li><i class="fa fa-arrows-h"></i>Step-free access</li>
         <% end %>
         <% if @location.automatic_doors? %>
-        <li>Automatic doors</li>
+        <li><%= image_tag "doors.png" %> Automatic doors</li>
         <% end %>
         <% if @location.disabled_parking? %>
-        <li>Disabled parking</li>
+        <li><%= image_tag "parking.png" %> Disabled parking</li>
         <% end %>
         <% if @location.accessible_toilets? %>
-        <li><i class="fa fa-venus-mars"></i>Accessible toilets</li>
+        <li><%= image_tag "toilets.png" %></i> Accessible toilets</li>
         <% end %>
         </ul>
       </div>
