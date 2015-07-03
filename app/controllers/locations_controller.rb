@@ -2,9 +2,13 @@ class LocationsController < ApplicationController
   def index
     @locations = policy_scope(Location)
 
-    if params[:category]
-      @locations = @locations.where(location_category: params[:category])
+    if params[:name] || params[:category]
+      @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
     end
+
+    # if params[:category]
+    #   @locations = @locations.where(location_category: params[:category])
+    # end
   end
 
   def show
