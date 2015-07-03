@@ -1,7 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h2><%= t(".sign_in", default: "Sign in") %></h2>
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <h2><%= t(".sign_in", default: "Sign in") %></h2>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= f.input :email, required: false, autofocus: true %>
@@ -9,7 +10,13 @@
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           <%= f.button :submit, t(".sign_in", default: "Sign in"), class: "btn btn-primary" %>
       <% end %>
+      <div class="clear"></div>
+        <div class=" home__auth--facebook-button text-center">
+        <%= link_to user_omniauth_authorize_path(:facebook), class: 'facebook-link' do %>
+          <i class='fa fa-facebook'></i> Connect with Facebook
+        <% end %>
 
+         </div>
       <%= render "devise/shared/links" %>
     </div>
   </div>

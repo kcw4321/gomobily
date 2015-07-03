@@ -2,14 +2,14 @@
  * Colors & Fonts
  * ------------------------------------- */
 $navbar-color: white;
-$navbar-hover-color: $yellow;
+$navbar-hover-color: #878787;
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 17px;
 $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
 $navbar-letter-spacing: 2,5px;
 $navbar-font-family: $navbar-font;
-$navbar-bg: #c2c4c4;
+$navbar-bg: #7D367A;
 
 /* -------------------------------------
  * Box model
@@ -66,6 +66,7 @@ $navbar-profile-border-width: 2px;
     background-color: transparent;
   }
 
+  .navbar-header > .home-icon > a:hover,
   .navbar-nav > li > a:hover,
   .navbar-nav > .open > a:hover {
     color: $navbar-hover-color;
@@ -73,6 +74,7 @@ $navbar-profile-border-width: 2px;
   }
 
   .navbar-brand,
+  .navbar-header > .home-icon > a,
   .navbar-brand:hover {
     outline: none;
     color: $navbar-color;
@@ -136,6 +138,11 @@ $navbar-profile-border-width: 2px;
   }
 }
 
+.home-icon {
+  padding-top: 25px;
+}
+
+
 /* -------------------------------------
  * Navbar profile picture
  * ------------------------------------- */
@@ -153,4 +160,34 @@ $navbar-profile-border-width: 2px;
       padding-bottom: 0;
     }
   }
+}
+/* -------------------------------------
+ * Navbar facebookconnect
+ * ------------------------------------- */
+.home__auth--facebook-button {
+  padding: 4px 15px 5px;
+  border: none;
+  background-color: #4E82BB;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  outline: none;
+  border-bottom: 1px solid #3b699b;
+  box-shadow: 0px 1px 1px -1px #909297;
+  -webkit-transition: color 150ms;
+  -moz-transition: color 150ms;
+  transition: color 150ms;
+  height: 40px;
+  width: 100%;
+  font-size: 13px;
+  }
+  a {
+  color: #81bfef;
+  text-decoration: none;
+}
+  .facebook-link{
+  color: white;
+  text-decoration: none;
 }

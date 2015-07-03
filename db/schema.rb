@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150702102237) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +89,11 @@ ActiveRecord::Schema.define(version: 20150702102237) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "picture"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.string   "city"
     t.string   "country"
     t.string   "mobility_category"

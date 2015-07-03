@@ -4,14 +4,16 @@
 background-color: $purple;
 font-size: 25px;
 padding: 25px;
-  li i {
-    text-color: $white;
+  &li a {
+    color: $white;
   }
 }
 
 
-
-
-.footer-button  {
-  text-color: $white;
-}
+  #footer a {
+    color: $white;
+    background-color: transparent;
+    &:hover {
+      color: #878787;
+    }
+  }
