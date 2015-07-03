@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:edit, :update, :destroy]
   end
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
 end
