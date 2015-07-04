@@ -11,6 +11,8 @@ class LocationsController < ApplicationController
     end
 
 
+    @locations = Location.all.paginate(page: params[:page], per_page: 10)
+
     # if params[:wheelchair_access] || params[:step_free_access] || params[:automatic_doors] || params[:disabled_parking || params[:accessible_toilets]
     #   @locations = @locations.where(step_free_access: params[:step_free_access]) || @locations.where(wheelchair_access: params[:wheelchair_access]) || @locations.where(disabled_parking: params[:disabled_parking]) || @locations.where(accessible_toilets: params[:accessible_toilets])
     # end
@@ -38,6 +40,7 @@ class LocationsController < ApplicationController
       render :new
     end
   end
+
   def edit
     @location = Location.find(params[:id])
     authorize @location
