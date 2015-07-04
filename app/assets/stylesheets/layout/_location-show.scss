@@ -9,14 +9,14 @@
 }
 
 .card {
-  margin-top: 15px;
+
   background: $white;
   border: 1px solid darken($white, 10%);
   border-radius: 5px;
   padding: 10px 0 10px 10px;
   margin-bottom: 20px;
   width: 90%;
-  margin: auto;
+  margin: 10px auto;
 }
 
 .padding-left {
@@ -25,4 +25,8 @@
 
 .padded-small {
   padding: 8px 0;
+}
+
+.search-form {
+  padding-left: 20px;
 }

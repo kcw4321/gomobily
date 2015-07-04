@@ -16,8 +16,7 @@
             <% if @location.website? %>
             <p class="location-details">Website: <%= @location.website %></p>
             <% end %>
-            <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
-            <p class="location-details"><%= @location.postcode %></p>
+            <p class="location-details">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
           </div>
         <div class="col-xs-4">
         <%= image_tag 'map-placeholder.png', width: '90%' %>
@@ -39,7 +38,7 @@
         <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
         <% end %>
         <% if @location.step_free_access? %>
-        <li><%= image_tag "step_free.png", :style=> "height: 25px" %>Step-free access</li>
+        <li><%= image_tag "step_free.png", :style=> "height: 18px" %> Step-free access</li>
         <% end %>
         <% if @location.automatic_doors? %>
         <li><%= image_tag "doors.png", :style=> "height: 25px" %> Automatic doors</li>

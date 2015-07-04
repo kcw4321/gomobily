@@ -2,13 +2,19 @@ class LocationsController < ApplicationController
   def index
     @locations = policy_scope(Location)
 
-    if params[:name] || params[:category]
-      @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
+    # if params[:name] || params[:category]
+    #   @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
+    # end
+
+    if params[:category]
+      @locations = @locations.where(location_category: params[:category])
     end
 
-    # if params[:category]
-    #   @locations = @locations.where(location_category: params[:category])
+
+    # if params[:wheelchair_access] || params[:step_free_access] || params[:automatic_doors] || params[:disabled_parking || params[:accessible_toilets]
+    #   @locations = @locations.where(step_free_access: params[:step_free_access]) || @locations.where(wheelchair_access: params[:wheelchair_access]) || @locations.where(disabled_parking: params[:disabled_parking]) || @locations.where(accessible_toilets: params[:accessible_toilets])
     # end
+
   end
 
   def show
