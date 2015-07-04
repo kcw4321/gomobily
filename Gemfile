@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.2.2"
 
+gem 'will_paginate', '~> 3.0.6'
 gem "rails", "4.2.3"
 gem "pg"
 gem "figaro"
