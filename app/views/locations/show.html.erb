@@ -16,8 +16,7 @@
             <% if @location.website? %>
             <p class="location-details">Website: <%= @location.website %></p>
             <% end %>
-            <p class="location-details">Address: <%= @location.street %>, <%= @location.city %></p>
-            <p class="location-details"><%= @location.postcode %></p>
+            <p class="location-details">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
           </div>
         <div class="col-xs-4">
         <%= image_tag 'map-placeholder.png', width: '90%' %>
