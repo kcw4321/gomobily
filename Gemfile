@@ -1,7 +1,10 @@
 source "https://rubygems.org"
+source 'https://rails-assets.org'
 
 ruby "2.2.2"
 
+gem "gmaps4rails"
+gem "rails-assets-underscore"
 gem 'geocoder'
 gem 'will_paginate', '~> 3.0.6'
 gem "rails", "4.2.3"
@@ -18,6 +21,7 @@ gem "aws-sdk", "< 2.0"
 gem "jquery-rails"
 gem "sass-rails", "~> 5.0"
 gem "uglifier"
+gem 'coffee-rails', '~> 4.1.0'
 gem "bootstrap-sass"
 gem "font-awesome-sass"
 gem "omniauth-facebook"

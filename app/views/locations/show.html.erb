@@ -14,12 +14,26 @@
             <p class="location-details">Telephone: <%= @location.telephone %></p>
             <% end %>
             <% if @location.website? %>
-            <p class="location-details">Website: <%= @location.website %></p>
+            <p class="location-details">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
             <% end %>
             <p class="location-details">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
           </div>
         <div class="col-xs-4">
-        <%= image_tag 'map-placeholder.png', width: '90%' %>
+        <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
+          <div id="map" class="padding-top" style="width: 95%; height: 300px;"></div>
+
+          <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+          $(document).on('ready', function() {
+            handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function(){
+              markers = handler.addMarkers(<%= raw @markers.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+            });
+          })
+        <% end %>
+      <% end %>
         <p class="text-center"><%= link_to 'Back to search results', :back %></p>
         <!-- Only if admin -->
         <p class="text-center"><%= link_to 'Edit listing', edit_location_path %></p>
