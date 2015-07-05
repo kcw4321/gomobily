@@ -44,4 +44,16 @@ class Location < ActiveRecord::Base
     content_type: /\Aimage\/.*\z/
 
   scope :validated, -> { where(validated: true) }
+
+  geocoded_by :full_address
+  after_validation :geocode, if: ->(location){
+    location.street.present? && location.street_changed?
+    location.city.present? && location.city_changed?
+    location.postcode.present? && location.postcode_changed?
+    }
+
+  def full_address
+     "#{street} #{city} #{postcode}"
+  end
+
 end

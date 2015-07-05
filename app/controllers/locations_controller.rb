@@ -61,6 +61,7 @@ class LocationsController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def location_params
