@@ -1,37 +1,48 @@
 class LocationsController < ApplicationController
+
   def index
-    @locations = policy_scope(Location)
-
-    # if params[:name] || params[:category]
-    #   @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
-    # end
-
-    if params[:category]
-      @locations = @locations.where(location_category: params[:category])
+    @locations= policy_scope(Location)
+    #@locations =Location.all
+    if params[:category].present?
+      @locations = Location.where(location_category: params[:category])
+    else
+      @locations = Location.all.paginate(per_page: 10)
     end
-
-
-    @locations = Location.all.paginate(page: params[:page], per_page: 10)
-
-    # if params[:wheelchair_access] || params[:step_free_access] || params[:automatic_doors] || params[:disabled_parking || params[:accessible_toilets]
-    #   @locations = @locations.where(step_free_access: params[:step_free_access]) || @locations.where(wheelchair_access: params[:wheelchair_access]) || @locations.where(disabled_parking: params[:disabled_parking]) || @locations.where(accessible_toilets: params[:accessible_toilets])
+    # if params[:category].present? || params[:name].present?
+    #   @locations = Location.where(name: params[:name], location_category: params[:category])
+    # else
+    #   @locations = Location.all.paginate(page: params[:page], per_page: 10)
     # end
 
     @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
-    marker.lat location.latitude
-    marker.lng location.longitude
+      marker.lat location.latitude
+      marker.lng location.longitude
+
     end
 
+    @markers.reject! do |marker|
+      marker[:lat].blank? || marker[:lng].blank?
+    end
+  end
+
+  def select
+    @location = Location.find(params[:id])
+    authorize @location
+    @location.destroy
+    redirect_to root_path
   end
 
   def show
     @location = Location.find(params[:id])
     authorize @location
 
+<<<<<<< HEAD
+=======
     @markers = Gmaps4rails.build_markers(@location) do |location, marker|
     marker.lat location.latitude
     marker.lng location.longitude
     end
+>>>>>>> master
   end
 
   def new
@@ -79,4 +90,5 @@ class LocationsController < ApplicationController
     :location_category, :validated, :wheelchair_access, :step_free_access, :automatic_doors, :disabled_parking,
     :accessible_toilets, :latitude, :longitude, :photo)
   end
+
 end
