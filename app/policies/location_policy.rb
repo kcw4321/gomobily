@@ -18,6 +18,7 @@ class LocationPolicy < ApplicationPolicy
     true
   end
 
+
   def show?
     true
   end
