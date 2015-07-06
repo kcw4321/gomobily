@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
   def index
     @locations = policy_scope(Location)
-
     # if params[:name] || params[:category]
     #   @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
     # end
@@ -21,7 +20,6 @@ class LocationsController < ApplicationController
       marker.lat location.latitude
       marker.lng location.longitude
     end
-
   end
 
   def show
