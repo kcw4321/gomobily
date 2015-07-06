@@ -2,7 +2,7 @@
   <h1 class="text-center">Listings</h1>
     <div class="container">
     <div class="row">
-      <div class="xs-col-12">
+      <div class="xs-col-12 listing">
           <%= form_tag locations_path, :method => :get do %>
           <div class="form-inline">
             <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
@@ -31,7 +31,7 @@
             <div class="col-xs-6">
               <p class="location-details"><%= location.name %></p>
               <% if location.photo? %>
-              <%= image_tag location.photo.url(:thumb), :class=> "img-show" %>
+              <%= image_tag location.photo.url(:thumb), height: '100px', width: '100px', :class=> "img-show" %>
               <% else %>
               <%= image_tag 'placeholder.jpg', height: '100px', :class=> "img-show" %>
               <% end %>
@@ -43,7 +43,7 @@
         </div>
       <div class="col-xs-6">
       <!-- %= image_tag 'map-placeholder.png', width: '80%' %> -->
-      <div id="map" style="width: 95%; height: 600px;"></div>
+      <div id="map" class="map-show" style="width: 95%; height: 600px;"></div>
 
     <% content_for(:after_js) do %>
     <%= javascript_tag do %>

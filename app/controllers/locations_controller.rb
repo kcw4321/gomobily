@@ -16,15 +16,20 @@ class LocationsController < ApplicationController
     #   @locations = @locations.where(step_free_access: params[:step_free_access]) || @locations.where(wheelchair_access: params[:wheelchair_access]) || @locations.where(disabled_parking: params[:disabled_parking]) || @locations.where(accessible_toilets: params[:accessible_toilets])
     # end
 
-      @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
+    @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
+    marker.lat location.latitude
+    marker.lng location.longitude
     end
   end
 
   def show
     @location = Location.find(params[:id])
     authorize @location
+
+    @markers = Gmaps4rails.build_markers(@location) do |location, marker|
+    marker.lat location.latitude
+    marker.lng location.longitude
+    end
   end
 
   def new
