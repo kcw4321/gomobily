@@ -41,7 +41,6 @@ class LocationsController < ApplicationController
     authorize @location
 
 
- ff1bea8e734fd39cc01a2c4d3f8a1d93d7b31498
     @markers = Gmaps4rails.build_markers(@location) do |location, marker|
     marker.lat location.latitude
     marker.lng location.longitude
