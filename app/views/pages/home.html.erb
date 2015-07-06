@@ -18,7 +18,7 @@
         <div class="xs-col-12">
           <%= form_tag(locations_path, method: "get", class: "") do %>
           <div class="form-inline">
-            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
+            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
             <%= text_field_tag(:name, nil, placeholder: "Search for a location", class: "form-control") %>
             <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
