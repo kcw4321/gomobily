@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
           <div class="col-xs-8">
-            <h1 class="text-center"><%= @location.name %></h1>
-            <% if @location.photo? %>
+             <h1 class="text-center"> <%= @location.name %></h1>
+             <% if @location.photo? %>
             <%= image_tag @location.photo.url(:medium), :class=> "pull-left img-show" %>
             <% else %>
             <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-show" %>

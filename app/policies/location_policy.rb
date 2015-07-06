@@ -13,5 +13,9 @@ class LocationPolicy < ApplicationPolicy
     # should be user.admin? when this is defined. True in meantime
     true
   end
+
+  def show?
+    true
+  end
 end
 

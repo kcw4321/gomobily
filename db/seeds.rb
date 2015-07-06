@@ -33,7 +33,7 @@ links.each do |link|
  description = html_doc.search('#place_description').text()
  city = html_doc.search('.fiche-adresse span a').text()
  street = html_doc.search('.fiche-adresse span').text().split(city)[0].strip[0..-2]
- location_category = html_doc.search('#fiche-coordonnes-infos div a')[0].text()
+ location_category =['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant'][rand(0..8)]
 
  location = user.locations.create(name: name, description: description, city: city, street: street, location_category: location_category)
  location.reviews.create(rating: 2, content: "super chouette l'accès", user_id: user.id)
