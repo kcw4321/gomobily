@@ -24,6 +24,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @user = current_user
     authorize @location
 
     @markers = Gmaps4rails.build_markers(@location) do |location, marker|

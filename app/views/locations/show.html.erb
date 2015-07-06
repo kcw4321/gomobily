@@ -9,6 +9,9 @@
             <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-show" %>
             <% end %>
             <p class="location-category"><%= @location.location_category %></p>
+
+            <div><%= link_to "add a review",  new_location_review_path(@location) %></div>
+
             <p class="description">Description: <%= @location.description %></p>
             <% if @location.telephone? %>
             <p class="location-details">Telephone: <%= @location.telephone %></p>
@@ -17,6 +20,15 @@
             <p class="location-details">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
             <% end %>
             <p class="location-details">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
+
+            <p>
+              <%= @user.name %>
+              <% @location.reviews.each do |review| %>
+                <%= review.rating %> -
+                <%= review.content %>
+              <% end %>
+            </p>
+
           </div>
         <div class="col-xs-4">
         <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->

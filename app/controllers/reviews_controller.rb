@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
   def set_location
     @location = Location.find(params[:location_id])
   end
+
   def review_params
     params.require(:review).permit(:rating, :content)
   end
