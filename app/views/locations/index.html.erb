@@ -1,20 +1,39 @@
 <div class="card">
-  <h1 class="text-center">Listings</h1>
+  <h1 class="text-center">Find a place to:</h1>
     <div class="container">
     <div class="row">
-      <div class="xs-col-12 listing">
+      <div class="col-xs-12 listing">
           <%= form_tag locations_path, :method => :get do %>
-          <div class="form-inline">
-            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
+          <div class="col-xs-12 form-inline text-center">
+            <%= select_tag :categorytype, options_for_select(['Eat', 'Fun', 'Move', 'Stay'], @categorytype), prompt: "What?", class: "form-control" %>
+            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant'], @category), prompt: "Choose a category", class: "form-control" %>
           <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
-          <div class="padded-small">
-          <p><span class="padding-left">Wheelchair access </span> <%= check_box_tag(:wheelchair_access) %>
+          <div class="col-xs-6 col-xs-offset-3">
+            <div class="col-xs-6">
+            <div class="col-xs-12">
+          <span class="padding-left">Wheelchair access </span> <%= check_box_tag(:wheelchair_access) %>
+           </div>
+            <div class="col-xs-12">
+
           <span class="padding-left">Step-free access </span> <%= check_box_tag(:step_free_access) %>
+             </div>
+             </div>
+            <div class="col-xs-6">
+            <div class="col-xs-12">
           <span class="padding-left">Automatic doors </span> <%= check_box_tag(:automatic_doors) %>
+                     </div>
+            <div class="col-xs-12">
+
           <span class="padding-left">Disabled parking </span> <%= check_box_tag(:disabled_parking) %>
-          <span class="padding-left">Accessible toilets </span> <%= check_box_tag(:accessible_toilets) %></p>
+                     </div>
+            <div class="col-xs-12">
+
+          <span class="padding-left">Accessible toilets </span> <%= check_box_tag(:accessible_toilets) %>
+            </div>           </div>
+
+
         </div>
         <% end %>
       </div>

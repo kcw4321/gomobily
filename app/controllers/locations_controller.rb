@@ -3,9 +3,13 @@ class LocationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @locations= policy_scope(Location)
+    @locations = policy_scope(Location)
     #@locations =Location.all
+    @categorytype = params[:categorytype]
+    @category = params[:category]
     if params[:category].present?
+    # elsif params[:wheelchair_access].present? && params[:step_free_access].present?&& params[:automatic_doors].present? && params[:disabled_parking].present?
+    # params[:accessible_toilets].present?
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
     else
       @locations = Location.all.paginate(:page => params[:page], :per_page => 10)

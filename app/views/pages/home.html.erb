@@ -16,11 +16,38 @@
         <h2>Search for accessibility information here</h2>
 
         <div class="xs-col-12">
-          <%= form_tag(locations_path, method: "get", class: "") do %>
-          <div class="form-inline">
-            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
-            <%= text_field_tag(:name, nil, placeholder: "Search for a location", class: "form-control") %>
-            <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+          <%= link_to locations_path(:categorytype => 'Stay') do %>
+          <div class="col-xs-4 col-xs-offset-2">
+              <%= image_tag 'se_loger.jpeg', :class=> "img-show", :width => 250 %>
+            <div class="caption">
+              <h3>Stay</h3>
+            </div>
+          </div>
+          <% end %>
+          <%= link_to locations_path(:categorytype => 'Eat') do %>
+          <div class="col-xs-4">
+              <%= image_tag 'manger.jpeg', :class=> "img-show", :width => 250 %>
+            <div class="caption">
+              <h3>Eat</h3>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <div class="xs-col-12">
+          <%= link_to locations_path(:categorytype => 'Fun') do %>
+          <div class="col-xs-4 col-xs-offset-2">
+              <%= image_tag 'se_cultiver.jpg', :class=> "img-show", :width => 250 %>
+            <div class="caption">
+              <h3>Fun</h3>
+            </div>
+          </div>
+          <% end %>
+          <%= link_to locations_path(:categorytype => 'Move') do %>
+          <div class="col-xs-4">
+              <%= image_tag 'se_déplacer.jpg', :class=> "img-show", :width => 250 %>
+            <div class="caption">
+              <h3>Move</h3>
+            </div>
           </div>
           <% end %>
         </div>
