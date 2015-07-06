@@ -20,7 +20,7 @@
           </div>
         <div class="col-xs-4">
         <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
-          <div id="map" class="padding-top" style="width: 95%; height: 300px;"></div>
+          <div id="map" class="map-show" style="width: 90%; height: 300px"></div>
 
           <% content_for(:after_js) do %>
           <%= javascript_tag do %>
@@ -30,40 +30,42 @@
               markers = handler.addMarkers(<%= raw @markers.to_json %>);
               handler.bounds.extendWith(markers);
               handler.fitMapToBounds();
+              handler.getMap().setZoom(14);
             });
           })
         <% end %>
       <% end %>
-        <p class="text-center"><%= link_to 'Back to search results', :back %></p>
         <!-- Only if admin -->
-        <p class="text-center"><%= link_to 'Edit listing', edit_location_path %></p>
+        <ul class="text-center list-inline">
+          <li><%= link_to 'Edit listing', edit_location_path %></p></li>
         <!-- % if policy(location).destroy? %> -->
         <!-- % end %> -->
         <!-- % if policy(location).destroy? %> -->
-        <p class="text-center"><%= link_to "Delete", location_path(@location), :method => :delete, data: { confirm: 'Are you sure?' } %></p>
+        <li><%= link_to "Delete", location_path(@location), :method => :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
         <!-- % end %> -->
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-        <!-- <div class="card"> -->
-        <ul class="list-inline">
-        <% if @location.wheelchair_access? %>
-        <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
-        <% end %>
-        <% if @location.step_free_access? %>
-        <li><%= image_tag "step_free.png", :style=> "height: 18px" %> Step-free access</li>
-        <% end %>
-        <% if @location.automatic_doors? %>
-        <li><%= image_tag "doors.png", :style=> "height: 25px" %> Automatic doors</li>
-        <% end %>
-        <% if @location.disabled_parking? %>
-        <li><%= image_tag "parking.png", :style=> "height: 18px" %> Disabled parking</li>
-        <% end %>
-        <% if @location.accessible_toilets? %>
-        <li><%= image_tag "toilets.png", :style=> "height: 18px" %></i> Accessible toilets</li>
-        <% end %>
-        </ul>
+          <ul class="list-inline">
+          <% if @location.wheelchair_access? %>
+          <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
+          <% end %>
+          <% if @location.step_free_access? %>
+          <li><%= image_tag "step_free.png", :style=> "height: 18px" %> Step-free access</li>
+          <% end %>
+          <% if @location.automatic_doors? %>
+          <li><%= image_tag "doors.png", :style=> "height: 25px" %> Automatic doors</li>
+          <% end %>
+          <% if @location.disabled_parking? %>
+          <li><%= image_tag "parking.png", :style=> "height: 18px" %> Disabled parking</li>
+          <% end %>
+          <% if @location.accessible_toilets? %>
+          <li><%= image_tag "toilets.png", :style=> "height: 18px" %></i> Accessible toilets</li>
+          <% end %>
+          </ul>
+          <p class="text-center"><%= link_to 'Back to search results', :back %></p>
       </div>
     </div>
   </div>

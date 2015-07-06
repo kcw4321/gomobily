@@ -2,13 +2,13 @@ class LocationsController < ApplicationController
   def index
     @locations = policy_scope(Location)
 
-    # if params[:name] || params[:category]
-    #   @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
-    # end
-
-    if params[:category]
-      @locations = @locations.where(location_category: params[:category])
+    if params[:name] || params[:category]
+      @locations = @locations.where(name: params[:name]) || @locations.where(category: params[:category])
     end
+
+    # if params[:category]
+    #   @locations = @locations.where(location_category: params[:category])
+    # end
 
 
     @locations = Location.all.paginate(page: params[:page], per_page: 10)
@@ -17,9 +17,9 @@ class LocationsController < ApplicationController
     #   @locations = @locations.where(step_free_access: params[:step_free_access]) || @locations.where(wheelchair_access: params[:wheelchair_access]) || @locations.where(disabled_parking: params[:disabled_parking]) || @locations.where(accessible_toilets: params[:accessible_toilets])
     # end
 
-      @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
+    @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
+    marker.lat location.latitude
+    marker.lng location.longitude
     end
 
   end
@@ -27,6 +27,11 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     authorize @location
+
+    @markers = Gmaps4rails.build_markers(@location) do |location, marker|
+    marker.lat location.latitude
+    marker.lng location.longitude
+    end
   end
 
   def new
