@@ -4,9 +4,10 @@ class LocationsController < ApplicationController
     @locations= policy_scope(Location)
     #@locations =Location.all
     if params[:category].present?
-      @locations = Location.where(location_category: params[:category])
+      @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
     else
-      @locations = Location.all.paginate(per_page: 10)
+      @locations = Location.all.paginate(:page => params[:page], :per_page => 10)
+
     end
     # if params[:category].present? || params[:name].present?
     #   @locations = Location.where(name: params[:name], location_category: params[:category])
@@ -36,13 +37,11 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     authorize @location
 
-<<<<<<< HEAD
-=======
     @markers = Gmaps4rails.build_markers(@location) do |location, marker|
     marker.lat location.latitude
     marker.lng location.longitude
     end
->>>>>>> master
+
   end
 
   def new
