@@ -39,7 +39,7 @@ class Location < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   has_attached_file :photo,
-    styles: { medium: "300x300>", thumb: "100#" }
+    styles: { medium: "300x300>", thumb: "x100" }
 
   validates_attachment_content_type :photo,
     content_type: /\Aimage\/.*\z/
