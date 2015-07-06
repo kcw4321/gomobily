@@ -14,7 +14,13 @@ class LocationPolicy < ApplicationPolicy
     true
   end
 
+
   def show?
+    true
+  end
+
+  def destroy?
+    # user.admin
     true
   end
 end

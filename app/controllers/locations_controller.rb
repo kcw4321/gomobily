@@ -13,9 +13,11 @@ class LocationsController < ApplicationController
     # else
     #   @locations = Location.all.paginate(page: params[:page], per_page: 10)
     # end
+
     @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
+
     end
 
     @markers.reject! do |marker|
@@ -34,6 +36,13 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     authorize @location
 
+<<<<<<< HEAD
+=======
+    @markers = Gmaps4rails.build_markers(@location) do |location, marker|
+    marker.lat location.latitude
+    marker.lng location.longitude
+    end
+>>>>>>> master
   end
 
   def new
