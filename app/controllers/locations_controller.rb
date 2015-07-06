@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @locations= policy_scope(Location)
     #@locations =Location.all
@@ -21,14 +23,15 @@ class LocationsController < ApplicationController
     @markers.reject! do |marker|
       marker[:lat].blank? || marker[:lng].blank?
     end
+    authorize @locations
   end
 
-  def select
-    @location = Location.find(params[:id])
-    authorize @location
-    @location.destroy
-    redirect_to root_path
-  end
+  # def select
+  #   @location = Location.find(params[:id])
+  #   authorize @location
+  #   @location.destroy
+  #   redirect_to root_path
+  # end
 
   def show
     @location = Location.find(params[:id])
