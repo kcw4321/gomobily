@@ -7,10 +7,12 @@ class LocationsController < ApplicationController
     #@locations =Location.all
     if params[:category].present?
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
+    elsif params[:name].present?
+      @locations = Location.paginate(:page => params[:page], :per_page => 10).where(name: params[:name])
     else
       @locations = Location.all.paginate(:page => params[:page], :per_page => 10)
-
     end
+
     # if params[:category].present? || params[:name].present?
     #   @locations = Location.where(name: params[:name], location_category: params[:category])
     # else
@@ -21,6 +23,7 @@ class LocationsController < ApplicationController
       marker.lat location.latitude
       marker.lng location.longitude
 
+
     end
 
     @markers.reject! do |marker|
@@ -28,6 +31,10 @@ class LocationsController < ApplicationController
     end
     authorize @locations
   end
+
+
+  # marker.picture { :picture => <marker-picture-file-path> })
+  # marker.json({ :id => user.id })
 
   # def select
   #   @location = Location.find(params[:id])
