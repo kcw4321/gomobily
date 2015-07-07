@@ -9,9 +9,6 @@
             <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-show" %>
             <% end %>
             <p class="location-category"><%= @location.location_category %></p>
-
-            <div><%= link_to "add a review",  new_location_review_path(@location) %></div>
-
             <p class="description">Description: <%= @location.description %></p>
             <% if @location.telephone? %>
             <p class="location-details">Telephone: <%= @location.telephone %></p>
@@ -20,15 +17,6 @@
             <p class="location-details">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
             <% end %>
             <p class="location-details">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
-
-            <p>
-              <%= @user.name %>
-              <% @location.reviews.each do |review| %>
-                <%= review.rating %> -
-                <%= review.content %>
-              <% end %>
-            </p>
-
           </div>
         <div class="col-xs-4">
         <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
@@ -77,6 +65,23 @@
           <li><%= image_tag "toilets.png", :style=> "height: 18px" %></i> Accessible toilets</li>
           <% end %>
           </ul>
+          <p>
+            <% @location.reviews.each do |review| %>
+              <ul>
+                <li>
+                  <div>
+                  <%= image_tag(current_user.picture.url(:medium), :class=> "img-show") %>
+                  <%= review.rating %>
+                  <%= review.content %>
+                  </div>
+                  <div>
+                  by <%= current_user.name %>
+                   at <%= "#{Time.now.strftime('%v %R')}" %>
+                  </div>
+                </li>
+              </ul>
+            <% end %>
+          </p>
           <p class="text-center"><%= link_to 'Back to search results', :back %></p>
       </div>
     </div>

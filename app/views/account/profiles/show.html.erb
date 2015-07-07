@@ -19,8 +19,8 @@
 
       <div>
         <% location.reviews.where(user_id: current_user.id).each do |review| %>
-          <%= current_user.review.rating %>
-          <%= current_user.review.content %>
+          <%= review.rating %>
+          <%= review.content %>
           <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
       </div>

@@ -24,7 +24,6 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @user = current_user
     authorize @location
 
     @markers = Gmaps4rails.build_markers(@location) do |location, marker|
@@ -76,6 +75,6 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(:name, :description, :website, :email, :telephone, :street, :city, :postcode,
     :location_category, :validated, :wheelchair_access, :step_free_access, :automatic_doors, :disabled_parking,
-    :accessible_toilets, :latitude, :longitude, :photo)
+    :accessible_toilets, :latitude, :longitude, :photo, :picture)
   end
 end
