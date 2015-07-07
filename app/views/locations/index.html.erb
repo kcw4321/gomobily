@@ -9,6 +9,7 @@
           <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
+          <div class="checkbox_header">
           <div class="padded-small">
           <p><span class="padding-left">Wheelchair access </span> <%= check_box_tag(:wheelchair_access) %>
           <span class="padding-left">Step-free access </span> <%= check_box_tag(:step_free_access) %>
@@ -16,6 +17,7 @@
           <span class="padding-left">Disabled parking </span> <%= check_box_tag(:disabled_parking) %>
           <span class="padding-left">Accessible toilets </span> <%= check_box_tag(:accessible_toilets) %></p>
         </div>
+      </div>
         <% end %>
       </div>
     </div>
