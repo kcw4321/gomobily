@@ -22,8 +22,7 @@ class LocationsController < ApplicationController
     @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
-
-
+      marker.infowindow view_context.link_to(location.name, location_path(location))
     end
 
     @markers.reject! do |marker|
@@ -31,7 +30,6 @@ class LocationsController < ApplicationController
     end
     authorize @locations
   end
-
 
   # marker.picture { :picture => <marker-picture-file-path> })
   # marker.json({ :id => user.id })
