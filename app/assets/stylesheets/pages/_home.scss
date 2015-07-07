@@ -1,15 +1,17 @@
 #home {
   background-image: asset-url("london.jpg");
   background-size: cover;
-  background-positiion: 50px;
-  padding: 50px;
+  background-position: center top;
+  opacity: 0.7;
+  padding-left: 50px;
+  padding-right: 50px;
   position: relative;
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding-top: 500px;
   position: relative;
   h2 {
     font-weight: 100;
     font-size: 25px;
+    color: white;
     font-family: $base-font;
   }
 }
@@ -28,3 +30,25 @@
   background-color: $purple;
   opacity: 0.7;
 }
+
+.top-down_searchbox{
+   padding-top: 100px;
+}
+
+#row-marg-neg {
+  margin-left: -50px;
+  margin-right: -50px;
+}
+
+.search-form {
+  background: #000;
+  background: rgba(0,0,0,0.6);
+  text-align: center;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+

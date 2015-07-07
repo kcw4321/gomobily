@@ -1,45 +1,63 @@
 <div class="card">
   <h1 class="text-center">Find a place to:</h1>
-    <div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 listing">
-          <%= form_tag locations_path, :method => :get do %>
-          <div class="col-xs-12 form-inline text-center">
+        <%= form_tag locations_path, :method => :get do %>
+          <div class="form-inline text-center">
             <%= select_tag :categorytype, options_for_select(['Eat', 'Fun', 'Move', 'Stay'], @categorytype), prompt: "What?", class: "form-control" %>
             <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant'], @category), prompt: "Choose a category", class: "form-control" %>
-          <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
-          <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+            <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
+            <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
-          <div class="col-xs-6 col-xs-offset-3">
-            <div class="col-xs-6">
-            <div class="col-xs-12">
-          <span class="padding-left">Wheelchair access </span> <%= check_box_tag(:wheelchair_access) %>
-           </div>
-            <div class="col-xs-12">
+          <div class="checkboxes">
+            <div class="col-sm-3 col-sm-offset-3">
+              <h4>Accessibility</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <%= check_box_tag(:wheelchair_access) %>
+                  <%= label_tag :wheelchair_access %>
+                </li>
+                <li>
+                  <% if params[:step_free_access] %>
+                    <%= check_box_tag(:step_free_access, "1", true) %>
+                  <% else %>
+                    <%= check_box_tag(:step_free_access, "1", false) %>
+                  <% end %>
+                  <%= label_tag :step_free_access %>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <h4>Services</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <%= check_box_tag(:automatic_doors) %>
+                  <%= label_tag :automatic_doors %>
+                </li>
+                <li>
+                  <%= check_box_tag(:disabled_parking) %>
+                  <%= label_tag :disabled_parking %>
+                </li>
+                <li>
+                  <%= check_box_tag(:accessible_toilets) %>
+                  <%= label_tag :accessible_toilets %>
+                </li>
+              </ul>
+            </div>
 
-          <span class="padding-left">Step-free access </span> <%= check_box_tag(:step_free_access) %>
-             </div>
-             </div>
-            <div class="col-xs-6">
-            <div class="col-xs-12">
-          <span class="padding-left">Automatic doors </span> <%= check_box_tag(:automatic_doors) %>
-                     </div>
-            <div class="col-xs-12">
-
-          <span class="padding-left">Disabled parking </span> <%= check_box_tag(:disabled_parking) %>
-                     </div>
-            <div class="col-xs-12">
-
-          <span class="padding-left">Accessible toilets </span> <%= check_box_tag(:accessible_toilets) %>
-            </div>           </div>
-
-
-        </div>
+          </div>
         <% end %>
+        </div>
       </div>
     </div>
-    </div>
   </div>
+  </div>
+</div>
+
+
+
+<!-- ########################### CARDS Listing-->
   <div class="card">
     <div class="row">
       <div class="col-xs-6">

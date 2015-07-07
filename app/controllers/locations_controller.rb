@@ -4,27 +4,27 @@ class LocationsController < ApplicationController
 
   def index
     @locations = policy_scope(Location)
-    #@locations =Location.all
     @categorytype = params[:categorytype]
     @category = params[:category]
-    if params[:category].present?
-    # elsif params[:wheelchair_access].present? && params[:step_free_access].present?&& params[:automatic_doors].present? && params[:disabled_parking].present?
-    # params[:accessible_toilets].present?
+
+    if params[:category]
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
+    elsif params[:name]
+      @locations = Location.paginate(:page => params[:page], :per_page => 10).where(name: params[:name])
     else
       @locations = Location.all.paginate(:page => params[:page], :per_page => 10)
-
     end
-    # if params[:category].present? || params[:name].present?
-    #   @locations = Location.where(name: params[:name], location_category: params[:category])
-    # else
-    #   @locations = Location.all.paginate(page: params[:page], per_page: 10)
-    # end
+
+    @locations = @locations.where(wheelchair_access: true) if params.has_key? :wheelchair_access
+    @locations = @locations.where(step_free_access: true) if params.has_key? :step_free_access
+    @locations = @locations.where(automatic_doors: true) if params.has_key? :automatic_doors
+    @locations = @locations.where(disabled_parking: true) if params.has_key? :disabled_parking
+    @locations = @locations.where(accessible_toilet: true) if params.has_key? :accessible_toilet
+
 
     @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
-
     end
 
     @markers.reject! do |marker|
