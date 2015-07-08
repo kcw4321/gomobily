@@ -1,8 +1,10 @@
 /* -------------------------------------
  * You killer button SASS module
  * ------------------------------------- */
- .button {
-  backgound-color: black
+ .btn-thin {
+  height: 30px;
+  line-height: 15px;
+  margin: 5px 0 10px 0;
  }
 
 .home__auth--facebook-button {

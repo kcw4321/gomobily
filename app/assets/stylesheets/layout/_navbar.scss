@@ -97,6 +97,11 @@ $navbar-profile-border-width: 2px;
     }
   }
 
+  .navbar-nav > li > a.btn-review {
+    background-color: $gray-light;
+    color: $white;
+  }
+
   .navbar-brand img, .navbar-brand svg {
     height: $navbar-height;
     padding: 0px;
@@ -144,6 +149,10 @@ $navbar-profile-border-width: 2px;
 
 .navbar-right li {
   padding: 0 5px;
+}
+
+.btn-review {
+
 }
 
 

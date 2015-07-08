@@ -21,7 +21,7 @@
         <% if user_signed_in? %>
           <% if @location && @location.id %>
           <li>
-          <%= link_to t(".top_call_to_action", default: "Leave a review"), new_location_review_path(@location), class: "btn" %>
+          <%= link_to t(".top_call_to_action", default: "Leave a review"), new_location_review_path(@location), class: "btn btn-review" %>
           </li>
           <% end %>
 

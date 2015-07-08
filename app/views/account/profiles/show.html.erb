@@ -10,11 +10,15 @@
         </div>
       </div>
       <div><%= link_to "edit",  edit_user_registration_path, :class=>"pull-right" %></div>
+
       </div>
+
       <div class="col-xs-6">
       <h2 class="text-center">My reviewed locations</h2>
-     <%# if @reviews %>
-     <% @reviews.each do |review| %>
+
+      <% if @review %>
+      <% @reviews.each do |review| %>
+
       <%= link_to review.location.name, location_path(review.location) %>
       in <%= review.location.city %>
         <div class="row">
@@ -38,9 +42,12 @@
               <p>No reviews added yet.</p>
               <%# end %>
             </div>
-        </div>
+
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
+    </div>
+
   </div>
 </div>
