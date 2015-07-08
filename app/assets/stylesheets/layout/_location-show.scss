@@ -1,6 +1,9 @@
 .location-details {
   font-size: 18px;
+}
 
+ul.list-unstyled label {
+  font-weight: normal
 }
 
 
@@ -13,6 +16,7 @@
   padding: 5px 10px;
   border-radius: 15px;
   width: 90px;
+  margin-left: 40px
 }
 
 .location-category {
