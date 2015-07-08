@@ -70,7 +70,7 @@ class LocationsController < ApplicationController
     authorize @location
 
     if @location.save
-      redirect_to location_path(@restaurant)
+      redirect_to location_path(@location)
     else
       render :new
     end

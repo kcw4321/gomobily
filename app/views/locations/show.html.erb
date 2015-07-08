@@ -41,14 +41,14 @@
         <!-- % if policy(location).destroy? %> -->
         <!-- % end %> -->
         <!-- % if policy(location).destroy? %> -->
-        <li><%= link_to "Delete", location_path(@location), :method => :delete , data: { confirm: 'Are you sure?' } %></li>
+        <!-- <li><%#= link_to "Delete", location_path(@location), :method => :delete , data: { confirm: 'Are you sure?' } %></li> -->
       </ul>
         <!-- % end %> -->
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <ul class="list-inline">
+          <ul class="list-inline padding-left">
           <% if @location.wheelchair_access? %>
           <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
           <% end %>
@@ -65,7 +65,7 @@
           <li><%= image_tag "toilets.png", :style=> "height: 18px" %></i> Accessible toilets</li>
           <% end %>
           </ul>
-          <p class="text-center"><%= link_to 'Back to search results', :back %></p>
+          <p class="text-center"><%= link_to 'Back', :back %></p>
       </div>
     </div>
   </div>
