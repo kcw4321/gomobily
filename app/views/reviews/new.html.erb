@@ -9,16 +9,17 @@
       <%= f.hidden_field :rating, :id => "#{form_id}_stars" %>
       <% (1..5).each do |i| %>
         <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
-      <% end %>
+      <% end %><span>(Score out of 5)</span>
+      <div class="padded-small"></div>
   </div>
   <div>
-      <%= f.text_area :content, placeholder: "Your review helps others know accessibility about awesome locations", :width => "400px" %>
+      <%= f.text_area :content, placeholder: "Your review helps others know accessibility about awesome locations", :cols => "40", :rows => "10" %>
       <div>
-      <%= f.button "Post my review" %>
+      <%= f.button "Post my review", class: "margin-small" %>
       <%= link_to 'Cancel', location_reviews_path %>
       </div>
     <% end %>
-    <div class="padded"></div>
+
     </div>
   </div>
 

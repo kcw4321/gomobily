@@ -12,3 +12,19 @@
   padding-top: 10px;
   width: 240px;
 }
+
+.margin-small {
+  margin: 15px;
+}
+
+input[type=submit], button[type=submit] {
+  padding:5px 15px;
+  color: #FFF;
+  background-color: #337AB7;
+  border-color: #2E6DA4;
+  border:0 none;
+  &:hover {
+    background-color: #286090;
+    border-color: #204D74;
+  }
+}

@@ -25,12 +25,14 @@
             'Public transport',
             'Restaurant'] %>
             <!-- %= f.input :validated, wrapper: :vertical_boolean %> -->
+              <p><strong>Accessibility</strong></p>
             <%= f.input :wheelchair_access, wrapper: :vertical_boolean %>
             <%= f.input :step_free_access, wrapper: :vertical_boolean %>
+            <p><strong>Services</strong></p>
             <%= f.input :automatic_doors, wrapper: :vertical_boolean %>
             <%= f.input :disabled_parking, wrapper: :vertical_boolean %>
             <%= f.input :accessible_toilets, wrapper: :vertical_boolean %>
-            <%= f.button :submit %>
+            <%= f.button :submit, :class => "btn-primary margin-small" %>
             <% end %>
             <i class="fa fa-trash-o"></i><%= link_to 'Cancel', locations_path %>
             <i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %>
