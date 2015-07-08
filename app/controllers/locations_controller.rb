@@ -7,11 +7,10 @@ class LocationsController < ApplicationController
     @categorytype = params[:categorytype]
     @category = params[:category]
 
-    if params[:category]
+    if params[:category].present?
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
 
     elsif params[:name].present?
-
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(name: params[:name])
     else
       @locations = Location.all.paginate(:page => params[:page], :per_page => 10)
