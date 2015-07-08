@@ -124,9 +124,17 @@
   font-size: smaller;
   // text-indent: 0;
   padding-right: 150px;
+  color: white;
+
+  &:hover {
+
+  }
+}
+
+.linkoption:hover {
+  color:#d8cdcd;
 }
 .colorpolice{
   color:white;
-  hover:red
 }
 
