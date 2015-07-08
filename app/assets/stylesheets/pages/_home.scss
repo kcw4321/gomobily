@@ -17,6 +17,10 @@
   }
 }
 
+.padding-bottom {
+  padding-bottom: 20px;
+}
+
 .text-white {
   color: $white;
   text-shadow: 1px 1px 3px darken($purple, 10%);
@@ -89,7 +93,7 @@
 
 .search-form {
   background: #000;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.4);
   text-align: center;
   // position: absolute;
   // bottom: 0;
