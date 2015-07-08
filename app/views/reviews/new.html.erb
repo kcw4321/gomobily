@@ -1,7 +1,8 @@
 <div class="card">
-  <h1>Write a Review</h1>
-  <h2>Your review</h2>
-  <div class="form">
+  <h1>Write a Review for <%= @location.name %></h1>
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1"><div class="form">
     <% form_id = "#{@location.id}_rating" %>
     <%= form_for [@location, @review], :html => {:id => "#{form_id}"} do |f| %>
       <%#= f.hidden_field :location_id %>
@@ -11,13 +12,15 @@
       <% end %>
   </div>
   <div>
-      <%= f.text_area :content, placeholder: "your review helps others know accessibility about awesome locations" %>
+      <%= f.text_area :content, placeholder: "Your review helps others know accessibility about awesome locations", :width => "400px" %>
       <div>
       <%= f.button "Post my review" %>
       <%= link_to 'Cancel', location_reviews_path %>
       </div>
     <% end %>
-    <div>
+    <div class="padded"></div>
+    </div>
+  </div>
 
     </div>
   </div>

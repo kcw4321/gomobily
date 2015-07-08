@@ -19,8 +19,11 @@
         <p class="description">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
       </div>
       <div class="col-xs-4">
-    <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
-        <div id="map" class="map-show" style="width: 90%; height: 300px"></div>
+
+
+        <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
+        <div id="map" class="map-show" style="width: 90%; height: 250px"></div>
+
 
         <% content_for(:after_js) do %>
           <%= javascript_tag do %>
@@ -88,6 +91,7 @@
           <% (5 - review.rating).times do %>
             <i class="fa fa-star grey padding-sides-3"></i>
           <% end %>
+<<<<<<< HEAD
             <br><%= review.content %>
             <% end %>
             <% end %>
@@ -98,6 +102,41 @@
           <p class="text-center"><i class="fa fa-chevron-circle-left"></i><%= link_to 'Back', :back %></p>
         </div>
       </div>
+=======
+
+        </ul>
+      </div>
+    </div>
+
+    <% @location.reviews.each do |review| %>
+      <div class="row clear">
+        <div class="col-xs-2">
+          <%= image_tag(current_user.picture.url(:medium), :class=> "img-show-avatar") %>
+        </div>
+        <div class="col-xs-10">
+          <div class="speech-bubble">
+            <div class="arrow left"></div>
+            <div class="review-info">
+              by <%= current_user.name %>
+               at <%= "#{review.created_at.strftime('%v %R')}" %>
+            </div>
+            <div class="rating">
+              <% review.rating.times do %>
+                <i class="fa fa-star on padding-sides-3"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="fa fa-star grey padding-sides-3"></i>
+              <% end %>
+                <br><%= review.content %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+        <p class="text-center"><%= link_to 'Back', :back %></p>
+        </div>
+>>>>>>> master
     </div>
   </div>
 </div>

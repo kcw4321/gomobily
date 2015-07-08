@@ -83,8 +83,16 @@
 }
 
 .top-down_searchbox{
+   padding-top: 90px;
+}
+.top-down_cardlink{
    padding-top: 100px;
 }
+
+.push-left_cardlink{
+   padding-left: 50px;
+}
+
 
 #row-marg-neg {
   margin-left: -50px;
@@ -106,5 +114,27 @@
 
 .margin-top-signup{
   margin-top: 20px;
+}
+
+
+.linkoption{
+  margin-top: -120px;
+  opacity: 0.92;
+  text-align: center;
+  font-size: smaller;
+  // text-indent: 0;
+  padding-right: 150px;
+  color: white;
+
+  &:hover {
+
+  }
+}
+
+.linkoption:hover {
+  color:#d8cdcd;
+}
+.colorpolice{
+  color:white;
 }
 
