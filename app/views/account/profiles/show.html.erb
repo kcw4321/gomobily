@@ -10,9 +10,11 @@
         </div>
       </div>
       <div><%= link_to "edit",  edit_user_registration_path, :class=>"pull-right" %></div>
+    </div>
       <div class="col-xs-6">
 
       <h2 class="text-center">My reviewed locations</h2>
+      <% if @review %>
       <% @reviews.each do |review| %>
       <%= link_to review.location.name, location_path(review.location) %>
       in <%= review.location.city %>
@@ -36,7 +38,10 @@
                 <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
               </div>
             </div>
-        </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
+    </div>
+  </div>
 </div>

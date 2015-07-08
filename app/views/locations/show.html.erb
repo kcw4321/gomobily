@@ -11,39 +11,39 @@
         <p class="location-category"><%= @location.location_category %></p>
         <p class="description">Description: <%= @location.description %></p>
         <% if @location.telephone? %>
-          <p class="location-details">Telephone: <%= @location.telephone %></p>
+          <p class="description">Telephone: <%= @location.telephone %></p>
         <% end %>
         <% if @location.website? %>
-          <p class="location-details">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
+          <p class="description">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
         <% end %>
-        <p class="location-details">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
+        <p class="description">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
       </div>
-     <div class="col-xs-4">
+      <div class="col-xs-4">
     <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
-     <div id="map" class="map-show" style="width: 90%; height: 300px"></div>
+        <div id="map" class="map-show" style="width: 90%; height: 300px"></div>
 
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        $(document).on('ready', function() {
-          handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function(){
-            markers = handler.addMarkers(<%= raw @markers.to_json %>);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            handler.getMap().setZoom(14);
-          });
-        })
-      <% end %>
-    <% end %>
-    <!-- Only if admin -->
-     <ul class="text-center list-inline">
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+            $(document).on('ready', function() {
+              handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function(){
+                markers = handler.addMarkers(<%= raw @markers.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(14);
+              });
+            })
+          <% end %>
+        <% end %>
+    <!-- Only if belongs to -->
+    <ul class="text-center list-inline">
       <li><%= link_to 'Edit listing', edit_location_path %></p></li>
     <!-- % if policy(location).destroy? %> -->
     <!-- % end %> -->
     <!-- % if policy(location).destroy? %> -->
 
     <!-- <li><%#= link_to "Delete", location_path(@location), :method => :delete , data: { confirm: 'Are you sure?' } %></li> -->
-  </ul>
+    </ul>
 
     <!-- % end %> -->
   </div>
@@ -68,7 +68,7 @@
       </ul>
     </div>
   </div>
-
+  <% if @review %>
   <% @location.reviews.each do |review| %>
     <div class="row">
       <div class="col-xs-2">
@@ -89,6 +89,7 @@
             <i class="fa fa-star grey padding-sides-3"></i>
           <% end %>
             <br><%= review.content %>
+            <% end %>
             <% end %>
         </div>
       </div>
