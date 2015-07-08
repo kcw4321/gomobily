@@ -4,14 +4,15 @@ class LocationsController < ApplicationController
 
   def index
     @locations = policy_scope(Location)
+
     @categorytype = params[:categorytype]
     @category = params[:category]
 
-    if params[:category]
+    if params[:category].present?
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
 
-    elsif params[:name].present?
 
+    elsif params[:name].present?
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(name: params[:name])
     else
       @locations = Location.all.paginate(:page => params[:page], :per_page => 10)
@@ -32,10 +33,12 @@ class LocationsController < ApplicationController
       marker.infowindow view_context.link_to(location.name, location_path(location))
     end
 
+
     @markers.reject! do |marker|
       marker[:lat].blank? || marker[:lng].blank?
     end
     authorize @locations
+
   end
 
   # marker.picture { :picture => <marker-picture-file-path> })
@@ -71,7 +74,7 @@ class LocationsController < ApplicationController
     authorize @location
 
     if @location.save
-      redirect_to location_path(@restaurant)
+      redirect_to location_path(@location)
     else
       render :new
     end
@@ -103,7 +106,7 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(:name, :description, :website, :email, :telephone, :street, :city, :postcode,
     :location_category, :validated, :wheelchair_access, :step_free_access, :automatic_doors, :disabled_parking,
-    :accessible_toilets, :latitude, :longitude, :photo)
+    :accessible_toilets, :latitude, :longitude, :photo, :picture)
   end
 
 end

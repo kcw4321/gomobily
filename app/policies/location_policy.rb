@@ -27,5 +27,9 @@ class LocationPolicy < ApplicationPolicy
     # user.admin
     true
   end
+
+  def show?
+    true
+  end
 end
 

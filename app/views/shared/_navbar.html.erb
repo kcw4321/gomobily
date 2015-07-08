@@ -19,9 +19,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <% if @location && @location.id %>
           <li>
-            <%= link_to t(".top_call_to_action", default: "Leave a review"), "#", class: "btn" %>
+          <%= link_to t(".top_call_to_action", default: "Leave a review"), new_location_review_path(@location), class: "btn" %>
           </li>
+          <% end %>
+
+            <li>
+            <%= link_to t(".top_call_to_action", default: "Add a location"), new_location_path, class: "btn" %>
+          </li>
+
+
+
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               Welcome <%= current_user.name %> <span class="caret"></span>
@@ -29,7 +38,7 @@
             <ul class="dropdown-menu" role="menu">
               <li>
                 <%= link_to account_profile_path do %>
-                  <i class="fa fa-user"></i> <%= t ".profile", default: "My profile" %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "My profile") %>
                 <% end %>
               </li>
               <li>

@@ -7,8 +7,10 @@
           <div class="form-inline text-center">
             <%= select_tag :categorytype, options_for_select(['Eat', 'Fun', 'Move', 'Stay'], @categorytype), prompt: "What?", class: "form-control" %>
 
+
             <%= select_tag :category, options_for_select(select_options_category(params[:categorytype]), @category), prompt: "Choose a category", class: "form-control" %>
-            <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
+            <%= text_field_tag(:name, nil, placeholder: "Enter name eg London Eye", class: "form-control") %>
+
             <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
         </div>
