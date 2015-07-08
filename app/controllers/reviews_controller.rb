@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
   end
   def create
     @review = @location.reviews.build(review_params)
+    @review.user = current_user
     authorize @review
     if @review.save
       redirect_to location_path(@location)
@@ -22,6 +23,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content, :user_id)
   end
 end
