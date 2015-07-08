@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20150706130823) do
     t.integer "category_id", null: false
   end
 
+  add_index "categories_locations", ["category_id", "location_id"], name: "index_categories_locations_on_category_id_and_location_id", using: :btree
+  add_index "categories_locations", ["location_id", "category_id"], name: "index_categories_locations_on_location_id_and_category_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -100,14 +103,14 @@ ActiveRecord::Schema.define(version: 20150706130823) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "name"
-    t.string   "city"
-    t.string   "country"
-    t.string   "mobility_category"
     t.string   "provider"
     t.string   "uid"
     t.string   "picture"
     t.string   "token"
     t.datetime "token_expiry"
+    t.string   "city"
+    t.string   "country"
+    t.string   "mobility_category"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
