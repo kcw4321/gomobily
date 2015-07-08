@@ -52,3 +52,31 @@
   padding-bottom: 30px;
 }
 
+.color-police{
+  color:white}
+
+.vt-container-h {
+  width: 100%;
+}
+
+.vt-container-v {
+  height: 100%;
+}
+
+.vt-container {
+  display: table;
+  position: relative;
+}
+
+
+.vt-middle {
+  vertical-align: middle;
+}
+
+.vt-top, .vt-middle, .vt-bottom {
+  display: table-cell;
+}
+
+.text-contrast {
+  color: #fff;
+}
