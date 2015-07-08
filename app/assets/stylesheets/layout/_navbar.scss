@@ -2,7 +2,7 @@
  * Colors & Fonts
  * ------------------------------------- */
 $navbar-color: white;
-$navbar-hover-color: #878787;
+$navbar-hover-color: #D8D8D8;
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 17px;
 $navbar-text-transform: capitalize;
@@ -93,7 +93,7 @@ $navbar-profile-border-width: 2px;
     background-color: $navbar-btn-bg;
     font-size: 12px;
     &:hover{
-      background-color: darken($navbar-btn-bg, 30%);
+      background-color: darken($navbar-btn-bg, 10%);
     }
   }
 

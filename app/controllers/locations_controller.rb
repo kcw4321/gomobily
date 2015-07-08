@@ -9,11 +9,14 @@ class LocationsController < ApplicationController
 
     if params[:category]
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(location_category: params[:category])
-    elsif params[:name]
+
+    elsif params[:name].present?
+
       @locations = Location.paginate(:page => params[:page], :per_page => 10).where(name: params[:name])
     else
       @locations = Location.all.paginate(:page => params[:page], :per_page => 10)
     end
+
 
     @locations = @locations.where(wheelchair_access: true) if params.has_key? :wheelchair_access
     @locations = @locations.where(step_free_access: true) if params.has_key? :step_free_access
@@ -22,9 +25,11 @@ class LocationsController < ApplicationController
     @locations = @locations.where(accessible_toilet: true) if params.has_key? :accessible_toilet
 
 
+
     @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
+      marker.infowindow view_context.link_to(location.name, location_path(location))
     end
 
     @markers.reject! do |marker|
@@ -32,6 +37,9 @@ class LocationsController < ApplicationController
     end
     authorize @locations
   end
+
+  # marker.picture { :picture => <marker-picture-file-path> })
+  # marker.json({ :id => user.id })
 
   # def select
   #   @location = Location.find(params[:id])
