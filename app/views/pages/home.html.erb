@@ -27,48 +27,55 @@
     </div>
   </div>
 </div>
-
-
 <div class="container">
   <div class="row">
 
-    <div class="xs-col-12 top-down_searchbox">
+    <div class="xs-col-12 top-down_searchbox ">
+
+     <div>
       <%= link_to locations_path(:categorytype => 'Stay') do %>
       <div class="col-xs-4 col-xs-offset-2">
           <%= image_tag 'se_loger.jpeg', :class=> "img-show", :width => 340 %>
-        <div class="caption">
+       <div class="linkoption">
           <h3>Stay</h3>
-
+        </div>
         </div>
       </div>
       <% end %>
+
       <%= link_to locations_path(:categorytype => 'Eat') do %>
-      <div class="col-xs-4">
+      <div class="col-xs-4 push-left_cardlink">
           <%= image_tag 'manger.jpeg', :class=> "img-show", :width =>340 %>
-        <div class="caption">
+        <div class="linkoption">
           <h3>Eat</h3>
         </div>
       </div>
       <% end %>
     </div>
+</div>
 
+  <div class = "top-down_cardlink">
     <div class="xs-col-12">
       <%= link_to locations_path(:categorytype => 'Fun') do %>
       <div class="col-xs-4 col-xs-offset-2">
           <%= image_tag 'se_cultiver.jpg', :class=> "img-show", :width => 350 %>
-        <div class="caption">
+        <!-- <div class="caption"> -->
+        <div class="linkoption">
           <h3>Fun</h3>
+          </div>
         </div>
       </div>
       <% end %>
       <%= link_to locations_path(:categorytype => 'Move') do %>
-      <div class="col-xs-4">
+      <div class="col-xs-4 push-left_cardlink">
           <%= image_tag 'se_déplacer.jpg', :class=> "img-show", :width => 320 %>
-        <div class="caption">
+       <div class="linkoption">
           <h3>Move</h3>
+          </div>
         </div>
       </div>
       <% end %>
-    </div>
+      </div>
+     </div>
   </div>
 </div>
