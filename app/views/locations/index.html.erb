@@ -1,26 +1,69 @@
 <div class="card">
-  <h1 class="text-center">Listings</h1>
-    <div class="container">
+
+  <h1 class="text-center">Where do you want to go?</h1>
+  <div class="container">
     <div class="row">
-      <div class="xs-col-12 listing">
-          <%= form_tag locations_path, :method => :get do %>
-          <div class="form-inline">
-            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum','Park','Public transport','Restaurant']), prompt: "Choose a category", class: "form-control" %>
-          <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
-          <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+      <div class="col-xs-7 listing">
+        <%= form_tag locations_path, :method => :get do %>
+          <div class="form-inline text-center">
+            <%= select_tag :categorytype, options_for_select(['Eat', 'Fun', 'Move', 'Stay'], @categorytype), prompt: "What?", class: "form-control" %>
+            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant'], @category), prompt: "Choose a category", class: "form-control" %>
+            <%= text_field_tag(:name, nil, placeholder: "Enter name eg London Eye", class: "form-control") %>
+            <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
-          <div class="padded-small">
-          <p><span class="padding-left">Wheelchair access </span> <%= check_box_tag(:wheelchair_access) %>
-          <span class="padding-left">Step-free access </span> <%= check_box_tag(:step_free_access) %>
-          <span class="padding-left">Automatic doors </span> <%= check_box_tag(:automatic_doors) %>
-          <span class="padding-left">Disabled parking </span> <%= check_box_tag(:disabled_parking) %>
-          <span class="padding-left">Accessible toilets </span> <%= check_box_tag(:accessible_toilets) %></p>
         </div>
+          <div class="checkboxes">
+            <div class="col-xs-2">
+              <h4>Accessibility</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <%= check_box_tag(:wheelchair_access) %>
+                  <%= label_tag :wheelchair_access %>
+                </li>
+                <li>
+                  <% if params[:step_free_access] %>
+                    <%= check_box_tag(:step_free_access, "1", true) %>
+                  <% else %>
+                    <%= check_box_tag(:step_free_access, "1", false) %>
+                  <% end %>
+                  <%= label_tag :step_free_access %>
+                </li>
+              </ul>
+            </div>
+             </div>
+          <div class="checkboxes">
+
+            <div class="col-xs-2">
+              <h4>Services</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <%= check_box_tag(:automatic_doors) %>
+                  <%= label_tag :automatic_doors %>
+                </li>
+                <li>
+                  <%= check_box_tag(:disabled_parking) %>
+                  <%= label_tag :disabled_parking %>
+                </li>
+                <li>
+                  <%= check_box_tag(:accessible_toilets) %>
+                  <%= label_tag :accessible_toilets %>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
         <% end %>
+        </div>
       </div>
     </div>
-    </div>
   </div>
+  </div>
+</div>
+
+
+
+<!-- ########################### CARDS Listing-->
   <div class="card">
     <div class="row">
       <div class="col-xs-6">
@@ -46,7 +89,7 @@
       <div id="map" class="map-show" style="width: 95%; height: 600px;"></div>
 
     <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
+    <script>
     $(document).on('ready', function() {
       handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function(){
@@ -55,7 +98,7 @@
         handler.fitMapToBounds();
       });
     })
-  <% end %>
+  </script>
 <% end %>
 
     </div>

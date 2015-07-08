@@ -5,12 +5,21 @@ class LocationPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def create?
     true
   end
 
   def update?
     # should be user.admin? when this is defined. True in meantime
+    true
+  end
+
+
+  def show?
     true
   end
 
