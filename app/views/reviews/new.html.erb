@@ -9,11 +9,16 @@
       <% (1..5).each do |i| %>
         <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
       <% end %>
+  </div>
+  <div>
       <%= f.text_area :content, placeholder: "your review helps others know accessibility about awesome locations" %>
-      <%= f.button :submit, "Post my review" %>
+      <div>
+      <%= f.button "Post my review" %>
+      <%= link_to 'Cancel', location_reviews_path %>
+      </div>
     <% end %>
     <div>
-      <%= link_to 'Cancel', location_reviews_path %>
+
     </div>
   </div>
 </div>
