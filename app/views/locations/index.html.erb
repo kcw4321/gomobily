@@ -1,5 +1,4 @@
 <div class="card">
-
   <h1 class="text-center">Where do you want to go?</h1>
   <div class="container">
     <div class="row">
@@ -7,7 +6,8 @@
         <%= form_tag locations_path, :method => :get do %>
           <div class="form-inline text-center">
             <%= select_tag :categorytype, options_for_select(['Eat', 'Fun', 'Move', 'Stay'], @categorytype), prompt: "What?", class: "form-control" %>
-            <%= select_tag :category, options_for_select(['Accommodation','Bar/cafe','Cinema','Cultural site','Museum/Gallery','Park','Public transport','Restaurant'], @category), prompt: "Choose a category", class: "form-control" %>
+
+            <%= select_tag :category, options_for_select(select_options_category(params[:categorytype]), @category), prompt: "Choose a category", class: "form-control" %>
             <%= text_field_tag(:name, nil, placeholder: "Enter location name", class: "form-control") %>
             <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
           </div>
@@ -17,9 +17,14 @@
               <h4>Accessibility</h4>
               <ul class="list-unstyled">
                 <li>
-                  <%= check_box_tag(:wheelchair_access) %>
+                  <% if params[:wheelchair_access] %>
+                  <%= check_box_tag(:wheelchair_access, "1", true) %>
+                  <% else %>
+                    <%= check_box_tag(:wheelchair_access, "1", false) %>
+                  <% end %>
                   <%= label_tag :wheelchair_access %>
                 </li>
+
                 <li>
                   <% if params[:step_free_access] %>
                     <%= check_box_tag(:step_free_access, "1", true) %>
@@ -37,15 +42,30 @@
               <h4>Services</h4>
               <ul class="list-unstyled">
                 <li>
-                  <%= check_box_tag(:automatic_doors) %>
+                  <% if params[:automatic_doors] %>
+                    <%= check_box_tag(:automatic_doors, "1", true) %>
+                  <% else %>
+                    <%= check_box_tag(:automatic_doors, "1", false) %>
+                  <% end %>
                   <%= label_tag :automatic_doors %>
                 </li>
+
+
                 <li>
-                  <%= check_box_tag(:disabled_parking) %>
+                   <% if params[:disabled_parking] %>
+                    <%= check_box_tag(:disabled_parking, "1", true) %>
+                  <% else %>
+                    <%= check_box_tag(:disabled_parking, "1", false) %>
+                  <% end %>
                   <%= label_tag :disabled_parking %>
                 </li>
+
                 <li>
-                  <%= check_box_tag(:accessible_toilets) %>
+                   <% if params[:accessible_toilets] %>
+                    <%= check_box_tag(:accessible_toilets, "1", true) %>
+                  <% else %>
+                    <%= check_box_tag(:accessible_toilets, "1", false) %>
+                  <% end %>
                   <%= label_tag :accessible_toilets %>
                 </li>
               </ul>
