@@ -1,5 +1,5 @@
 $(function() {
-  $('.star_rating').click(function() {
+  $('.star_rating').on("click", function() {
     var star = $(this);
     var form_id = $(this).attr('data-form-id');
     var stars = $(this).attr('data-stars');
@@ -14,7 +14,5 @@ $(function() {
     }
 
     $('#' + location_id + '_rating_stars').val(stars)
-
-
   });
 });

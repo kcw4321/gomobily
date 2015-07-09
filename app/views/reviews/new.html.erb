@@ -1,28 +1,26 @@
-<div class="card">
-  <h1>Write a review for <%= @location.name.capitalize %></h1>
- <div class="container">
+<div class="card" id="review-form-container">
+  <div class="container">
     <div class="row">
-      <div class="col-xs-offset-1"><div class="form">
-    <% form_id = "#{@location.id}_rating" %>
-    <%= form_for [@location, @review], :html => {:id => "#{form_id}"} do |f| %>
-      <%#= f.hidden_field :location_id %>
-      <%= f.hidden_field :rating, :id => "#{form_id}_stars" %>
-      <% (1..5).each do |i| %>
-        <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
-      <% end %><span>(Score out of 5)</span>
-      <div class="padded-small"></div>
-  </div>
-  <div>
-      <%= f.text_area :content, placeholder: "Your review helps others know accessibility about awesome locations", :cols => "40", :rows => "10" %>
-      <div>
-      <%= f.button "Post my review", class: "margin-small" %>
-      <%= link_to 'Cancel', location_reviews_path %>
+      <div class="col-xs-offset-2 col-xs-8">
+          <h1>Write a review for <%= @location.name.capitalize %></h1>
+          <% form_id = "#{@location.id}_rating" %>
+          <%= simple_form_for [@location, @review], :html => {:id => "#{form_id}"} do |f| %>
+            <%#= f.hidden_field :location_id %>
+            <%= f.hidden_field :rating, :id => "#{form_id}_stars", value: 0 %>
+            <% (1..5).each do |i| %>
+              <i class="fa fa-star star_rating" data-stars="<%= i %>" data-form-id="<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
+            <% end %>
+            <span>(Score out of 5)</span>
+            <div class="padded-small"></div>
+
+
+            <%= f.input :content, :cols => "40", :rows => "10", input_html: { placeholder: "Your review helps others know accessibility about awesome locations", class: "form-control" }%>
+
+            <%= f.submit "Post my review"%>
+            <%= link_to 'Cancel', location_reviews_path %>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-
-    </div>
-  </div>
-
     </div>
   </div>
 </div>
