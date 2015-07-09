@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   has_many :locations, dependent: :destroy
 
   has_attached_file :picture,
-    styles: { medium: "300x300>", thumb: "100x100>" }
+    styles: { medium: "250x250>", thumb: "100x100>" }
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 

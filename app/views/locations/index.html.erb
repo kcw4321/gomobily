@@ -1,5 +1,5 @@
 <div class="card">
-  <h1 class="text-center">Where do you want to go?</h1>
+  <h1 class="text-center">What do you want to do?</h1>
   <div class="container">
     <div class="row">
       <div class="col-xs-7 listing">
@@ -93,7 +93,7 @@
               <% else %>
               <%= image_tag 'placeholder.jpg', height: '100px', :class=> "img-show" %>
               <% end %>
-              <p><%= link_to "View location", location_path(location), class: "btn btn-primary" %></p>
+              <p><%= link_to "View location", location_path(location), class: "btn btn-primary btn-thin" %></p>
               </div>
             <% end %>
           </div>
@@ -104,7 +104,7 @@
         <div id="map" class="map-show" style="width: 95%; height: 600px;"></div>
       </div>
     </div>
-    <i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %>
+    <p class="text-center"><i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %></p>
   </div>
 </div>
 <% content_for(:after_js) do %>

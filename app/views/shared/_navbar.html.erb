@@ -20,9 +20,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <% if @location && @location.id %>
-            <li>
-              <%= link_to t(".top_call_to_action", default: "Leave a review"), new_location_review_path(@location), class: "btn" %>
-            </li>
+          <li>
+          <%= link_to t(".top_call_to_action", default: "Leave a review"), new_location_review_path(@location), class: "btn btn-review" %>
+          </li>
           <% end %>
           <li>
             <%= link_to t(".top_call_to_action", default: "Add a location"), new_location_path, class: "btn" %>

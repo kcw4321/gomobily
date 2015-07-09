@@ -70,7 +70,7 @@ class LocationsController < ApplicationController
 
   # create needs admin approval
   def create
-    @location = Location.new(location_params)
+    @location = current_user.locations.new(location_params)
     authorize @location
 
     if @location.save
