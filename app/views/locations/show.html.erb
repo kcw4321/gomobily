@@ -39,8 +39,10 @@
           <% end %>
         <% end %>
     <!-- Only if belongs to -->
+    <% if current_user.id == @location.user_id %>
     <ul class="text-center list-inline">
       <li><%= link_to 'Edit listing', edit_location_path %></p></li>
+      <% end %>
     <!-- % if policy(location).destroy? %> -->
     <!-- % end %> -->
     <!-- % if policy(location).destroy? %> -->
