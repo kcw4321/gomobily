@@ -10,7 +10,7 @@
           <p>City: <%= current_user.city %></p>
         </div>
         </div>
-      <div><%= link_to "edit",  edit_user_registration_path, class: "btn btn-primary pull-right" %></div>
+      <div><%= link_to "edit",  edit_user_registration_path, class: "btn btn-primary pull-right margin-small" %></div>
       <div><%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t ".log_out", default: "Log out" %>
         <% end %>
