@@ -105,7 +105,11 @@
         <div id="map" class="map-show" style="width: 95%; height: 600px;"></div>
       </div>
     </div>
-    <p class="text-center"><i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %></p>
+      <p class="text-center location-back">
+      <%= link_to :back do  %>
+        <i class="fa fa-arrow-left"></i> Back
+      <% end %>
+      </p>
   </div>
 </div>
 <% content_for(:after_js) do %>

@@ -90,13 +90,13 @@
             <div class="review-box">
               <div class="row clear">
                 <div class="col-xs-2 text-right">
-                  <%= image_tag(current_user.picture.url(:medium), :class=> "img-show-avatar") %>
+                  <%= image_tag(review.user.picture.url(:medium), :class=> "img-show-avatar") %>
                 </div>
                 <div class="col-xs-10">
                   <div class="speech-bubble">
                     <div class="arrow left"></div>
                     <div class="review-info">
-                      by <%= current_user.name %>
+                      by <%= review.user.name %>
                       at <%= "#{review.created_at.strftime('%v %R')}" %>
                     </div>
                     <div class="rating">
@@ -117,20 +117,20 @@
 
           <div class="row">
             <div class="col-xs-12 padding-left">
-              <p>Be the first to <%= link_to 'leave a review', new_location_review_path(@location) %></p>
+              <p class="review-box">Be the first to <%= link_to 'leave a review', new_location_review_path(@location), class: "btn btn-warning btn-sm" %></p>
                <% end %>
             </div>
           </div>
 
 
-        <div class="row">
-          <div class="col-xs-12">
-            <p class="text-center location-back">
-              <%= link_to :back do  %>
-                <i class="fa fa-arrow-left"></i> Back to something
-              <% end %>
-            </p>
-          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="text-center location-back">
+                <%= link_to :back do  %>
+                  <i class="fa fa-arrow-left"></i> Back
+                <% end %>
+              </p>
+            </div>
           </div>
         </div>
       </div>
