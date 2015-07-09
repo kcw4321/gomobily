@@ -2,42 +2,43 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
-        <h2 class="text-center"> Hello <%= current_user.name %> </h1>
+        <h2 class="text-center"> Hello <%= current_user.name %> </h2>
         <div class="text-center">
         <div class='img-circle'><%= image_tag(current_user.picture.url(:medium), :class=> "img-show") %></div>
         <div>
           E-mail: <%= current_user.email %>
         </div>
-      </div>
+        </div>
       <div><%= link_to "edit",  edit_user_registration_path, :class=>"pull-right" %></div>
       </div>
       <div class="col-xs-6">
       <h2 class="text-center">My reviewed locations</h2>
-      <% if @reviews.count == 0 %>
-        <p> You didn't write any review yet !</p>
-      <% else %>
+      <% if @reviews %>
         <% @reviews.each do |review| %>
         <%= link_to review.location.name, location_path(review.location) %>
         in <%= review.location.city %>
           <div class="row">
-              <div class="speech-bubble">
-                <div class="arrow left"></div>
-                <div class="rating">
-                  <div class="review-info">
-                    by <%= review.user.name %>
-                    at <%= "#{review.created_at.strftime('%v %R')}" %>
-                  </div>
-                  <% review.rating.times do %>
-                    <i class="fa fa-star on padding-sides-3"></i>
-                  <% end %>
-                  <% (5 - review.rating).times do %>
-                    <i class="fa fa-star grey padding-sides-3"></i>
-                  <% end %>
-                  <%= review.content %>
-                  <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
+            <div class="speech-bubble">
+              <div class="arrow left"></div>
+              <div class="rating">
+                <div class="review-info">
+                  by <%= review.user.name %>
+                  at <%= "#{review.created_at.strftime('%v %R')}" %>
                 </div>
+                <% review.rating.times do %>
+                  <i class="fa fa-star on padding-sides-3"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="fa fa-star grey padding-sides-3"></i>
+                <% end %>
+                <br><%= review.content %>
+                <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
               </div>
+            </div>
           </div>
+        <% end %>
+      <% else %>
+        <p> You didn't write any review yet !</p>
       <% end %>
     </div>
   </div>

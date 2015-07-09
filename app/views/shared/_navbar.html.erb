@@ -39,7 +39,11 @@
               </li>
               <li>
                 <%= link_to edit_user_registration_path  do %>
-                  <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit profile & reviews" %>
+                  <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit my profile" %>
+                <% end %>
+              <li>
+                <%= link_to '#'  do %>
+                  <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit my reviews" %>
                 <% end %>
               </li>
               <li>

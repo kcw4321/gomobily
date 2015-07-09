@@ -87,7 +87,7 @@
           <div class="row">
           <% @locations.each do |location| %>
             <div class="col-xs-6">
-              <p class="location-details"><%= location.name %></p>
+              <p class="location-details"><%= location.name.titleize %></p>
               <% if location.photo? %>
               <%= image_tag location.photo.url(:thumb), height: '100px', width: '100px', :class=> "img-show" %>
               <% else %>
