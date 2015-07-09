@@ -18,7 +18,7 @@
       </div>
       <div class="col-xs-6">
       <h2 class="text-center">My reviewed locations</h2>
-      <% if @reviews %>
+      <% if @reviews.present? %>
         <% @reviews.each do |review| %>
         <%= link_to review.location.name.downcase.titleize, location_path(review.location) %>
         in <%= review.location.city.titleize %>
