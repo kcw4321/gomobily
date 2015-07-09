@@ -24,13 +24,9 @@
           <%= link_to t(".top_call_to_action", default: "Leave a review"), new_location_review_path(@location), class: "btn btn-review" %>
           </li>
           <% end %>
-
-            <li>
+          <li>
             <%= link_to t(".top_call_to_action", default: "Add a location"), new_location_path, class: "btn" %>
           </li>
-
-
-
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               Welcome <%= current_user.name %> <span class="caret"></span>
@@ -43,14 +39,8 @@
               </li>
               <li>
                 <%= link_to edit_user_registration_path  do %>
-                  <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit profile & reviews" %>
+                  <i class="fa fa-pencil"></i> <%= t ".profile", default: "Edit my profile" %>
                 <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t ".log_out", default: "Log out" %>
-                <% end %>
-              </li>
             </ul>
           </li>
         <% else %>

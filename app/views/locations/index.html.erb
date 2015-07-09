@@ -1,3 +1,4 @@
+
 <div class="card">
   <h1 class="text-center">What do you want to do?</h1>
   <div class="container">
@@ -11,7 +12,7 @@
             <%= select_tag :category, options_for_select(select_options_category(params[:categorytype]), @category), prompt: "Choose a category", class: "form-control" %>
             <%= text_field_tag(:name, nil, placeholder: "Enter name eg London Eye", class: "form-control") %>
 
-            <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+            <%= submit_tag "Search", :name => nil, class: "btn btn-primary btn-lg" %>
           </div>
         </div>
           <div class="checkboxes">
@@ -87,7 +88,7 @@
           <div class="row">
           <% @locations.each do |location| %>
             <div class="col-xs-6">
-              <p class="location-details"><%= location.name %></p>
+              <p class="location-details"><%= location.name.titleize %></p>
               <% if location.photo? %>
               <%= image_tag location.photo.url(:thumb), height: '100px', width: '100px', :class=> "img-show" %>
               <% else %>
@@ -104,7 +105,11 @@
         <div id="map" class="map-show" style="width: 95%; height: 600px;"></div>
       </div>
     </div>
-    <p class="text-center"><i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %></p>
+      <p class="text-center location-back">
+      <%= link_to :back do  %>
+        <i class="fa fa-arrow-left"></i> Back
+      <% end %>
+      </p>
   </div>
 </div>
 <% content_for(:after_js) do %>

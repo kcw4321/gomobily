@@ -1,29 +1,37 @@
 <div class="card">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-xs-8">
-        <h1 class="text-center"><%= @location.name %></h1>
-          <% if @location.photo? %>
-            <%= image_tag @location.photo.url(:medium), :class=> "pull-left img-show" %>
-          <% else %>
-            <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-show" %>
-          <% end %>
-        <p class="location-category"><%= @location.location_category %></p>
-        <p class="description">Description: <%= @location.description %></p>
-        <% if @location.telephone? %>
-          <p class="description">Telephone: <%= @location.telephone %></p>
-        <% end %>
-        <% if @location.website? %>
-          <p class="description">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
-        <% end %>
-        <p class="description">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
+        <div class="location-infos">
+          <h1><%= @location.name.titleize %></h1>
+          <div class="row">
+            <div class="col-xs-4">
+              <% if @location.photo? %>
+                <%= image_tag @location.photo.url(:medium), :class=> "pull-left img-responsive" %>
+              <% else %>
+                <%= image_tag 'placeholder.jpg', width: '40%', :class=> "pull-left img-responsive" %>
+              <% end %>
+            </div>
+            <div class="col-xs-8">
+              <div class="location-details">
+                <p class="location-category"><%= @location.location_category %></p>
+                <p class="description">Description: <%= @location.description %></p>
+                <% if @location.telephone? %>
+                  <p class="description">Telephone: <%= @location.telephone %></p>
+                <% end %>
+                <% if @location.website? %>
+                  <p class="description">Website: <%= link_to @location.website, @location.website, target: "_blank" %></p>
+                <% end %>
+                <p class="description">Address: <%= @location.street %>, <%= @location.city %> <%= @location.postcode %></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-xs-4">
 
-
         <!-- %= image_tag 'map-placeholder.png', width: '90%' %> -->
         <div id="map" class="map-show" style="width: 90%; height: 250px"></div>
-
 
         <% content_for(:after_js) do %>
           <%= javascript_tag do %>
@@ -38,75 +46,95 @@
             })
           <% end %>
         <% end %>
-    <!-- Only if belongs to -->
-    <% if current_user.id == @location.user_id %>
-    <ul class="text-center list-inline">
-      <li><%= link_to 'Edit listing', edit_location_path %></p></li>
-      <% end %>
-    <!-- % if policy(location).destroy? %> -->
-    <!-- % end %> -->
-    <!-- % if policy(location).destroy? %> -->
+        <!-- Only if belongs to -->
 
-    <!-- <li><%#= link_to "Delete", location_path(@location), :method => :delete , data: { confirm: 'Are you sure?' } %></li> -->
-    </ul>
+        <% if current_user && (current_user.id == @location.user_id) %>
+          <ul class="text-center list-inline">
+            <li><%= link_to 'Edit listing', edit_location_path %></p></li>
+          </ul>
+        <% end %>
+        <!-- % if policy(location).destroy? %> -->
+        <!-- % end %> -->
+        <!-- % if policy(location).destroy? %> -->
 
-    <!-- % end %> -->
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <ul class="list-inline padding-left">
-      <% if @location.wheelchair_access? %>
-        <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
-      <% end %>
-      <% if @location.step_free_access? %>
-        <li><%= image_tag "step_free.png", :style=> "height: 18px" %> Step-free access</li>
-      <% end %>
-      <% if @location.automatic_doors? %>
-        <li><%= image_tag "doors.png", :style=> "height: 25px" %> Automatic doors</li>
-      <% end %>
-      <% if @location.disabled_parking? %>
-        <li><%= image_tag "parking.png", :style=> "height: 18px" %> Disabled parking</li>
-      <% end %>
-      <% if @location.accessible_toilets? %>
-        <li><%= image_tag "toilets.png", :style=> "height: 18px" %></i> Accessible toilets</li>
-      <% end %>
-      </ul>
+        <!-- <li><%#= link_to "Delete", location_path(@location), :method => :delete , data: { confirm: 'Are you sure?' } %></li> -->
+      </div>
     </div>
   </div>
-  <% if @review %>
-  <% @location.reviews.each do |review| %>
-    <div class="row">
-      <div class="col-xs-2">
-        <%= image_tag(current_user.picture.url(:medium), :class=> "img-show-avatar") %>
-      </div>
-    <div class="col-xs-10">
-      <div class="speech-bubble">
-        <div class="arrow left"></div>
-        <div class="review-info">
-          by <%= current_user.name %>
-           at <%= "#{review.created_at.strftime('%v %R')}" %>
-        </div>
-        <div class="rating">
-          <% review.rating.times do %>
-            <i class="fa fa-star on padding-sides-3"></i>
+  <div class="container-fluid text-center">
+    <div class="location-categories">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-inline padding-left">
+          <% if @location.wheelchair_access? %>
+            <li><i class="fa fa-wheelchair"></i>Wheelchair access</li>
           <% end %>
-          <% (5 - review.rating).times do %>
-            <i class="fa fa-star grey padding-sides-3"></i>
+          <% if @location.step_free_access? %>
+            <li><%= image_tag "step_free.png", :style=> "height: 18px" %> Step-free access</li>
+          <% end %>
+          <% if @location.automatic_doors? %>
+            <li><%= image_tag "doors.png", :style=> "height: 25px" %> Automatic doors</li>
+          <% end %>
+          <% if @location.disabled_parking? %>
+            <li><%= image_tag "parking.png", :style=> "height: 18px" %> Disabled parking</li>
+          <% end %>
+          <% if @location.accessible_toilets? %>
+            <li><%= image_tag "toilets.png", :style=> "height: 18px" %></i> Accessible toilets</li>
+          <% end %>
+          </ul>
+        </div>
+          </div>
+        </div>
+        <% if @location.reviews.present? %>
+          <% @location.reviews.each do |review| %>
+            <div class="review-box">
+              <div class="row clear">
+                <div class="col-xs-2 text-right">
+                  <%= image_tag(review.user.picture.url(:medium), :class=> "img-show-avatar") %>
+                </div>
+                <div class="col-xs-10">
+                  <div class="speech-bubble">
+                    <div class="arrow left"></div>
+                    <div class="review-info">
+                      by <%= review.user.name %>
+                      at <%= "#{review.created_at.strftime('%v %R')}" %>
+                    </div>
+                    <div class="rating">
+                      <% review.rating.times do %>
+                        <i class="fa fa-star on padding-sides-3"></i>
+                      <% end %>
+                      <% (5 - review.rating).times do %>
+                        <i class="fa fa-star grey padding-sides-3"></i>
+                      <% end %>
+                        <br><%= review.content %>
+                    </div>
+                  </div>
+                </div>
+            </div>
           <% end %>
 
-            <br><%= review.content %>
-            <% end %>
-            <% end %>
-        </div>
-      </div>
+        <% else %>
+
           <div class="row">
-          <div class="col-xs-12">
-          <p class="text-center"><i class="fa fa-chevron-circle-left"></i><%= link_to 'Back', :back %></p>
+            <div class="col-xs-12 padding-left">
+              <p class="review-box">Be the first to <%= link_to 'leave a review', new_location_review_path(@location), class: "btn btn-warning btn-sm" %></p>
+               <% end %>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="text-center location-back">
+                <%= link_to :back do  %>
+                  <i class="fa fa-arrow-left"></i> Back
+                <% end %>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
 

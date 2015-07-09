@@ -2,34 +2,33 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
-        <h2 class="text-center"> Hello <%= current_user.name %> </h1>
+        <h2 class="text-center"> Hello <%= current_user.name %> </h2>
         <div class="text-center">
         <div class='img-circle'><%= image_tag(current_user.picture.url(:medium), :width => "200px", class: "img-circle") %></div>
         <div>
           <p>E-mail: <%= current_user.email %></p>
           <p>City: <%= current_user.city %></p>
         </div>
-
+        </div>
+      <div><%= link_to "edit",  edit_user_registration_path, class: "btn btn-primary pull-right" %></div>
+      <div><%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t ".log_out", default: "Log out" %>
+        <% end %>
       </div>
-      <div class="btn btn-primary pull-right"<%= link_to "edit",  edit_user_registration_path %></div>
-
       </div>
 
       <div class="col-xs-6">
       <h2 class="text-center">My reviewed locations</h2>
-
-      <% if @review %>
-      <% @reviews.each do |review| %>
-
-      <%= link_to review.location.name, location_path(review.location) %>
-      in <%= review.location.city %>
-        <div class="row">
+      <% if @reviews.present? %>
+        <% @reviews.each do |review| %>
+        <%= link_to review.location.name.downcase.titleize, location_path(review.location) %>
+        in <%= review.location.city.titleize %>
+          <div class="row">
             <div class="speech-bubble">
-              <div class="arrow left"></div>
               <div class="rating">
                 <div class="review-info">
                   by <%= review.user.name %>
-                  at <%= "#{review.created_at.strftime('%v %R')}" %>
+                  at <%= "#{review.updated_at.strftime('%v %R')}" %>
                 </div>
                 <% review.rating.times do %>
                   <i class="fa fa-star on padding-sides-3"></i>
@@ -37,19 +36,26 @@
                 <% (5 - review.rating).times do %>
                   <i class="fa fa-star grey padding-sides-3"></i>
                 <% end %>
-                <%= review.content %>
-                <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
+                <% form_id = "#{review.id}_rating" %>
+                <%= simple_form_for [:account, review], html: { class: "review-edit form-horizontal" } do |f| %>
+                  <%= f.input :content %>
+                  <%= f.input :rating, input_html: { id: "#{review.id}_rating_stars" } %>
+                      <% (1..5).each do |i| %>
+                        <i class="fa fa-star star_rating" data-stars = "<%= i %>" data-form-id = "<%= "#{form_id}_#{i}" %>" id="<%= "#{form_id}_#{i}" %>"></i>
+                        <% end %>
+                  <%= f.submit "Update my review" %>
+                <% end %>
+                <br><%= review.content %></br>
+                <a href="#" class="show-form">edit |</a>
+                <%= link_to 'delete', account_review_path(review), method: :delete, data: { confirm: "Do you really want to delete me?" } %></br>
               </div>
-              <%# else %>
-              <p>No reviews added yet.</p>
-              <%# end %>
             </div>
-
           </div>
         <% end %>
+      <% else %>
+        <p> You didn't write any review yet !</p>
       <% end %>
     </div>
-    </div>
-
+</div>
   </div>
 </div>

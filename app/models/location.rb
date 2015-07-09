@@ -47,12 +47,20 @@ class Location < ActiveRecord::Base
 
   scope :validated, -> { where(validated: true) }
 
+  before_save :check_website, if: :website_changed?
+
   geocoded_by :full_address
   after_validation :geocode, if: ->(location){
     location.street.present? && location.street_changed?
     location.city.present? && location.city_changed?
     location.postcode.present? && location.postcode_changed?
     }
+
+  def check_website
+    unless self.website[/\Ahttp:\/\//] || self.website[/\Ahttps:\/\//]
+      self.website = "http://#{self.website}"
+    end
+  end
 
   def full_address
      "#{street} #{city} #{postcode}"

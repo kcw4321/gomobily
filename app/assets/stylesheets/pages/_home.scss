@@ -2,7 +2,6 @@
   background-image: asset-url("london.jpg");
   background-size: cover;
   background-position: center top;
-  opacity: 0.7;
   padding-left: 50px;
   padding-right: 50px;
   position: relative;
@@ -33,22 +32,18 @@
   right: 0;
   bottom: 0;
   background-color: $purple;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
-
 .speech-bubble {
-  background-color: #f8f8f8;
-  border: 1px solid #c8c8c8;
+  background-color: #F5F1F1;
   border-radius: 5px;
-  width: 90%;
+  width: 70%;
   text-align: left;
   padding: 15px;
-  // position: absolute;
 }
 
 .speech-bubble .arrow {
-  border-style: solid;
   position: absolute;
 }
 
@@ -59,7 +54,7 @@
 }
 
 .left:after {
-  border-color: transparent #f8f8f8 transparent transparent;
+  border-color: transparent #F5F1F1 transparent transparent;
   border-style: solid;
   border-width: 7px 7px 7px 0px;
   left: 1px;
@@ -71,6 +66,10 @@
 .review-info {
   font-size: 12px;
   font-style: italic;
+}
+
+.review-edit {
+  display: none;
 }
 
 .padding-sides-3 {
