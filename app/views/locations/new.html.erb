@@ -36,7 +36,15 @@
             <%= f.button :submit, :class => "btn-primary margin-small" %>
             <% end %>
             <i class="fa fa-trash-o"></i><%= link_to 'Cancel', locations_path %>
-            <i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %>
+             <div class="row">
+            <div class="col-xs-12">
+              <p class="text-center location-back">
+                <%= link_to :back do  %>
+                  <i class="fa fa-arrow-left"></i> Back
+                <% end %>
+              </p>
+            </div>
+          </div>
           </div>
         </div>
       </div>
