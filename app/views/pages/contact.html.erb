@@ -1,3 +1,22 @@
 <div class="card">
-  <h1>Contact us</h1>
+  <h1 class="text-center">Contact us</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="form">
+            <%= simple_form_for Messagecontact.new, html: {multipart: true} do |f| %>
+            <%= f.input :title%>
+            <%= f.input :description%>
+            <%= f.input :telephone %>
+            <%= f.input :email %>
+            <%= f.input :city %>
+            <%= f.button :submit, :class => "btn-primary margin-small" %>
+            <% end %>
+
+            <i class="fa fa-chevron-circle-left"></i><%= link_to "Back", :back %>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+
