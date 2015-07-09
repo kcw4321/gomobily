@@ -37,7 +37,7 @@ class Location < ActiveRecord::Base
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_and_belongs_to_many :categories
-  has_and_belongs_to_many :locations_options
+  # has_and_belongs_to_many :locations_options
 
   has_attached_file :photo,
     styles: { medium: "300x300>", thumb: "x100" }
