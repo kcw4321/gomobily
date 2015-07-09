@@ -36,15 +36,13 @@
   opacity: 0.7;
 }
 
-
 .speech-bubble {
   background-color: #f8f8f8;
   border: 1px solid #c8c8c8;
   border-radius: 5px;
-  width: 90%;
+  width: 70%;
   text-align: left;
   padding: 15px;
-  // position: absolute;
 }
 
 .speech-bubble .arrow {
@@ -71,6 +69,10 @@
 .review-info {
   font-size: 12px;
   font-style: italic;
+}
+
+.review-edit {
+  display: none;
 }
 
 .padding-sides-3 {
