@@ -32,6 +32,9 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
 
+  validates :rating, presence: true, inclusion: { in: 0...5 }
+  validates :user_id, presence: true
+
   # validates :content
   # validates :rating, :presence => { :message => " cannot be blank, please select your rating!" }
 end
