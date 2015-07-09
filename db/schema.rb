@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706130823) do
+ActiveRecord::Schema.define(version: 20150709141456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20150706130823) do
 
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
+  create_table "messagecontacts", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "telephone"
+    t.string   "description"
+    t.string   "title"
+    t.string   "email"
+    t.string   "city"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.integer  "rating"
@@ -102,14 +112,14 @@ ActiveRecord::Schema.define(version: 20150706130823) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "name"
-    t.string   "city"
-    t.string   "country"
-    t.string   "mobility_category"
     t.string   "provider"
     t.string   "uid"
     t.string   "picture"
     t.string   "token"
     t.datetime "token_expiry"
+    t.string   "city"
+    t.string   "country"
+    t.string   "mobility_category"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
