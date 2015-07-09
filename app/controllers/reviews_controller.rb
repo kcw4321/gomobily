@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :set_location
+
   def new
     @review = Review.new
     @review.location = @location
     authorize @review
   end
+
   def create
     @review = @location.reviews.build(review_params)
     @review.user = current_user

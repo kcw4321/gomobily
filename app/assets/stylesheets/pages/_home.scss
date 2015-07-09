@@ -42,8 +42,7 @@
   border-radius: 5px;
   width: 70%;
   text-align: left;
-  padding: 20px;
-  position: absolute;
+  padding: 15px;
 }
 
 .speech-bubble .arrow {
@@ -70,6 +69,10 @@
 .review-info {
   font-size: 12px;
   font-style: italic;
+}
+
+.review-edit {
+  display: none;
 }
 
 .padding-sides-3 {
