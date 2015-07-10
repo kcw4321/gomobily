@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20150709141456) do
     t.integer "category_id", null: false
   end
 
+  add_index "categories_locations", ["category_id", "location_id"], name: "index_categories_locations_on_category_id_and_location_id", using: :btree
+  add_index "categories_locations", ["location_id", "category_id"], name: "index_categories_locations_on_location_id_and_category_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
