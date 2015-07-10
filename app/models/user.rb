@@ -20,14 +20,15 @@
 #  picture_file_size      :integer
 #  picture_updated_at     :datetime
 #  name                   :string
-#  city                   :string
-#  country                :string
-#  mobility_category      :string
 #  provider               :string
 #  uid                    :string
 #  picture                :string
 #  token                  :string
 #  token_expiry           :datetime
+#  city                   :string
+#  country                :string
+#  mobility_category      :string
+#  admin                  :boolean          default(FALSE), not null
 #
 # Indexes
 #
