@@ -127,15 +127,20 @@ ActiveRecord::Schema.define(version: 20150709163758) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "name"
+    t.string   "city"
+    t.string   "country"
+    t.string   "mobility_category"
     t.string   "provider"
     t.string   "uid"
     t.string   "picture"
     t.string   "token"
     t.datetime "token_expiry"
+
     t.string   "city"
     t.string   "country"
     t.string   "mobility_category"
     t.boolean  "admin",                  default: false, null: false
+
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
